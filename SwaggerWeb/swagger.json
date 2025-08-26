@@ -1,0 +1,4061 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Jacfit Apis",
+    "description": "My User Project Application API"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    },
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {}
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/UserMap/C2M_MapUnitMoveOnBike": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_MapUnitMoveOnBike",
+        "parameters": [
+          {
+            "name": "DistanceTravelledTarget",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "SpeedMS",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Calories",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Power",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_MapUnitMoveOnRun": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_MapUnitMoveOnRun",
+        "parameters": [
+          {
+            "name": "DistanceTravelledTarget",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "SpeedMS",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Calories",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Cadence",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Pace",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TotalStepCount",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_MapUnitOnBoxing": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_MapUnitOnBoxing",
+        "parameters": [
+          {
+            "name": "Calories",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "BoxingData",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Score",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Hp",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_MapUnitReceiveReward": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_MapUnitReceiveReward",
+        "parameters": [
+          {
+            "name": "ItemIdList",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "SurpriseId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_LookAtTarget": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_LookAtTarget",
+        "parameters": [
+          {
+            "name": "MapUnitId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_EnforceSyncMapUnitsInfo": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_EnforceSyncMapUnitsInfo",
+        "parameters": [
+          {
+            "name": "MapUnitIdList",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_SaveRideRecord": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_SaveRideRecord",
+        "parameters": [
+          {
+            "name": "Note",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamInvite": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamInvite",
+        "parameters": [
+          {
+            "name": "ReceiverUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamGoBattleProgress": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamGoBattleProgress",
+        "parameters": [
+          {
+            "name": "Progress",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamReady": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamReady",
+        "parameters": [
+          {
+            "name": "IsReady",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamRun": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamRun",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamKick": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamKick",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamDeliveryLeader": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamDeliveryLeader",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamDisband": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamDisband",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2G_SyncPlayerState_Return": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2G_SyncPlayerState_Return",
+        "parameters": [
+          {
+            "name": "IsReturn",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserRealm/C2R_SignUp": {
+      "post": {
+        "tags": [
+          "UserRealm"
+        ],
+        "description": "C2R_SignUp",
+        "parameters": [
+          {
+            "name": "Email",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Secret",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserRealm/C2R_Authentication": {
+      "post": {
+        "tags": [
+          "UserRealm"
+        ],
+        "description": "C2R_Authentication",
+        "parameters": [
+          {
+            "name": "Info",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2G_Logout": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2G_Logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_Link": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_Link",
+        "parameters": [
+          {
+            "name": "Info",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateUserProfile": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateUserProfile",
+        "parameters": [
+          {
+            "name": "Name",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Sex",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Height",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Weight",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Location",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Birthday",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Hobby",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "SelfIntroduction",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateUserCharacter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateUserCharacter",
+        "parameters": [
+          {
+            "name": "CharSettingList",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "LeaderId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateUserPet": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateUserPet",
+        "parameters": [
+          {
+            "name": "PetSettingList",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateUserLanguage": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateUserLanguage",
+        "parameters": [
+          {
+            "name": "Language",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetAuthority": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetAuthority",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetDBAuthority": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetDBAuthority",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ShareOnSocial": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ShareOnSocial",
+        "parameters": [
+          {
+            "name": "SocialType",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetUserAllEquipment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetUserAllEquipment",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UnLockUserEquipment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UnLockUserEquipment",
+        "parameters": [
+          {
+            "name": "ItemId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_BuyUserEquipment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_BuyUserEquipment",
+        "parameters": [
+          {
+            "name": "ItemId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Count",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetRelationshipList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetRelationshipList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AddRelationship": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AddRelationship",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RemoveRelationship": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RemoveRelationship",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RefreshStranger": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RefreshStranger",
+        "parameters": [
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetRelationshipApplyList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetRelationshipApplyList",
+        "parameters": [
+          {
+            "name": "IsRequested",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RefreshRelationshipApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RefreshRelationshipApply",
+        "parameters": [
+          {
+            "name": "IsRequested",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AcceptRelationshipApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AcceptRelationshipApply",
+        "parameters": [
+          {
+            "name": "ApplyId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RefuseRelationshipApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RefuseRelationshipApply",
+        "parameters": [
+          {
+            "name": "ApplyId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_QueryRelationshipByUids": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_QueryRelationshipByUids",
+        "parameters": [
+          {
+            "name": "Uids",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_QueryRelationshipByName": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_QueryRelationshipByName",
+        "parameters": [
+          {
+            "name": "Name",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_GiveEmoticon": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_GiveEmoticon",
+        "parameters": [
+          {
+            "name": "MapUnitId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "EmoticonIndex",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_GiveAisatsu": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_GiveAisatsu",
+        "parameters": [
+          {
+            "name": "MapUnitId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Content",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_Announcement": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_Announcement",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserRealm/C2R_Login": {
+      "post": {
+        "tags": [
+          "UserRealm"
+        ],
+        "description": "C2R_Login",
+        "parameters": [
+          {
+            "name": "Account",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2G_LoginGate": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2G_LoginGate",
+        "parameters": [
+          {
+            "name": "Key",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TestActorRequest": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TestActorRequest",
+        "parameters": [
+          {
+            "name": "Info",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2G_PlayerInfo": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2G_PlayerInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_SetSportType": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_SetSportType",
+        "parameters": [
+          {
+            "name": "CurrentSportType",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RoamingGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RoamingGetList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RoamingEnter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RoamingEnter",
+        "parameters": [
+          {
+            "name": "RoamingRoomId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamGetList",
+        "parameters": [
+          {
+            "name": "IsReservation",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamInviteAccept": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamInviteAccept",
+        "parameters": [
+          {
+            "name": "InviteId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamEnter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamEnter",
+        "parameters": [
+          {
+            "name": "TeamRoomId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamCreate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamCreate",
+        "parameters": [
+          {
+            "name": "RoadSettingId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "RoundCount",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamReservationJoin": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamReservationJoin",
+        "parameters": [
+          {
+            "name": "ReservationId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamReservationCreate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamReservationCreate",
+        "parameters": [
+          {
+            "name": "RoadSettingId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "StartUTCTimeTick",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "RoundCount",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "MemberUid",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamInviteGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamInviteGetList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamInviteRefuseAll": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamInviteRefuseAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamInviteRefuse": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamInviteRefuse",
+        "parameters": [
+          {
+            "name": "InviteId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamReservationCancel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamReservationCancel",
+        "parameters": [
+          {
+            "name": "ReservationId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamReservationGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamReservationGetList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RoamingLeave": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RoamingLeave",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamLeave": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamLeave",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_SyncPlayerState": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_SyncPlayerState",
+        "parameters": [
+          {
+            "name": "StateData",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetFileNameOfRideDetailedBriefInfo": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetFileNameOfRideDetailedBriefInfo",
+        "parameters": [
+          {
+            "name": "RideRecordId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectDistanceCount": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectDistanceCount",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUserCreateCount": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUserCreateCount",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUserTeaminfoCount": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUserTeaminfoCount",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerGift": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerGift",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "GiftId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerDelete": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerDelete",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "GiftId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUserCreate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUserCreate",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUserOnline": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUserOnline",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectDistance": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectDistance",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Type",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSendAttachment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSendAttachment",
+        "parameters": [
+          {
+            "name": "Uids",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Attachments",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "IsSendAllUser",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Title",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Message",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSendCoin": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSendCoin",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Coin",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "IsSendAllUser",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUser": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUser",
+        "parameters": [
+          {
+            "name": "Error",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Message",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerSelectUserTeaminfo": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerSelectUserTeaminfo",
+        "parameters": [
+          {
+            "name": "SelectUser",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Type",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerServerConfig": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerServerConfig",
+        "parameters": [
+          {
+            "name": "Error",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Message",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "MessageTip",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Announcement",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "FileName",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerRoamingGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerRoamingGetList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerTeamGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerTeamGetList",
+        "parameters": [
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "IsReservation",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TeamPlayerList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TeamPlayerList",
+        "parameters": [
+          {
+            "name": "Error",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Message",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "RoomId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Type",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_SelectUserInfo": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_SelectUserInfo",
+        "parameters": [
+          {
+            "name": "PlayerUID",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerFireBase": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerFireBase",
+        "parameters": [
+          {
+            "name": "Message",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "LanguageType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "IsFirebase",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "IsMassageTip",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerAutoBroadcast": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerAutoBroadcast",
+        "parameters": [
+          {
+            "name": "Info",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "RoomInfos",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "TaskIds",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerDeleteAutoBroadcast": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerDeleteAutoBroadcast",
+        "parameters": [
+          {
+            "name": "BroadcastId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerEditAutoBroadcast": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerEditAutoBroadcast",
+        "parameters": [
+          {
+            "name": "Info",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ManagerGetAllAutoBroadcast": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ManagerGetAllAutoBroadcast",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_SendMail": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_SendMail",
+        "parameters": [
+          {
+            "name": "Email",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetMail": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetMail",
+        "parameters": [
+          {
+            "name": "PlayerUID",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetRewardAttachment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetRewardAttachment",
+        "parameters": [
+          {
+            "name": "EmailId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AcceptInviteAttachment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AcceptInviteAttachment",
+        "parameters": [
+          {
+            "name": "EmailId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RefuseInviteAttachment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RefuseInviteAttachment",
+        "parameters": [
+          {
+            "name": "EmailId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_IsReadMail": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_IsReadMail",
+        "parameters": [
+          {
+            "name": "Email",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteMail": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteMail",
+        "parameters": [
+          {
+            "name": "Email",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_TeamChat": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_TeamChat",
+        "parameters": [
+          {
+            "name": "Chat",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateAchieveLeader": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateAchieveLeader",
+        "parameters": [
+          {
+            "name": "MedalLeaderId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetReward": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetReward",
+        "parameters": [
+          {
+            "name": "TaskId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetTaskList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetTaskList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetAllTopLevelAchieve": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetAllTopLevelAchieve",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UnLockScene": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UnLockScene",
+        "parameters": [
+          {
+            "name": "SceneId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetUserAllScene": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetUserAllScene",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UnlockCharacter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UnlockCharacter",
+        "parameters": [
+          {
+            "name": "CharacterId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetUserAllCharacter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetUserAllCharacter",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UseFoodUpdatePetIntimate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UseFoodUpdatePetIntimate",
+        "parameters": [
+          {
+            "name": "PetId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "PetFoodId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Count",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UseTouchUpdatePetIntimate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UseTouchUpdatePetIntimate",
+        "parameters": [
+          {
+            "name": "PetId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdatePetNickName": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdatePetNickName",
+        "parameters": [
+          {
+            "name": "PetId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "NickName",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UnlockPet": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UnlockPet",
+        "parameters": [
+          {
+            "name": "PetId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetUserAllPet": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetUserAllPet",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserMap/C2M_ChangeBattleRecordNote": {
+      "post": {
+        "tags": [
+          "UserMap"
+        ],
+        "description": "C2M_ChangeBattleRecordNote",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "RecordId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Note",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeLobbyRecordNote": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeLobbyRecordNote",
+        "parameters": [
+          {
+            "name": "RecordId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Note",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_TagRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_TagRecord",
+        "parameters": [
+          {
+            "name": "RecordId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Tag",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityHomePagePlayerIdentityCard": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityHomePagePlayerIdentityCard",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityHomePagePlayerBaseInfo": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityHomePagePlayerBaseInfo",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityHomePagePlayerSportRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityHomePagePlayerSportRecord",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityHomePageVisibility": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityHomePageVisibility",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityHomePageVisibility": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityHomePageVisibility",
+        "parameters": [
+          {
+            "name": "PlayerHomePageInfoVisibility",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeFurnitureSetting": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeFurnitureSetting",
+        "parameters": [
+          {
+            "name": "PlayerFurnitureSetting",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UnlockFurnitureSetting": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UnlockFurnitureSetting",
+        "parameters": [
+          {
+            "name": "ItemId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityMoodPost": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityMoodPost",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetFriendCommunityMoodPost": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetFriendCommunityMoodPost",
+        "parameters": [
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityMoodPostComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityMoodPostComment",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityMoodPost": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityMoodPost",
+        "parameters": [
+          {
+            "name": "Post",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityMoodPost": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityMoodPost",
+        "parameters": [
+          {
+            "name": "Post",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityMoodPostComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityMoodPostComment",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Comment",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "StickerId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteCommunityMoodPost": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteCommunityMoodPost",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteCommunityMoodPostComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteCommunityMoodPostComment",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "CommentId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityMoodPostSensibility": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityMoodPostSensibility",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Sensibility",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityMoodCommentSensibility": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityMoodCommentSensibility",
+        "parameters": [
+          {
+            "name": "PostId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "CommentId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Sensibility",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityMoodSmallRoom": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityMoodSmallRoom",
+        "parameters": [
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityMoodInvitation": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityMoodInvitation",
+        "parameters": [
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Invitation",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClub",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityClub",
+        "parameters": [
+          {
+            "name": "ConfigId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "ClubName",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Introduction",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateCommunityClub",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "ConfigId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "ClubName",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Introduction",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DisbandCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DisbandCommunityClub",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_QueryCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_QueryCommunityClub",
+        "parameters": [
+          {
+            "name": "ClubName",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "ClubType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "HotType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_JoinCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_JoinCommunityClub",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_LeaveCommunityClub": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_LeaveCommunityClub",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubMember": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubMember",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubMemberComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubMemberComment",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "StartAt",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "EndAt",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityClubMemberComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityClubMemberComment",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Content",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteCommunityClubMemberComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteCommunityClubMemberComment",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "CommentId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubInvitationApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubInvitationApply",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_InviteUserAsCommunityClubMember": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_InviteUserAsCommunityClubMember",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_InviteUsersAsCommunityClubMembers": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_InviteUsersAsCommunityClubMembers",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Uids",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AcceptCommunityClubInvitationApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AcceptCommunityClubInvitationApply",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_RefuseCommunityClubInvitationApply": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_RefuseCommunityClubInvitationApply",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_KickCommunityClubMember": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_KickCommunityClubMember",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AppointCommunityClubNewLeader": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AppointCommunityClubNewLeader",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "TargetUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_QueryCommunityClubRelationshipByName": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_QueryCommunityClubRelationshipByName",
+        "parameters": [
+          {
+            "name": "Name",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubMemberStackDayLeaderboard": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubMemberStackDayLeaderboard",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubMemberMileageLeaderboard": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubMemberMileageLeaderboard",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubMemberActivityCountLeaderboard": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubMemberActivityCountLeaderboard",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "SportType",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubAnnouncement": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubAnnouncement",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCommunityClubAnnouncementStateRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCommunityClubAnnouncementStateRecord",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Page",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_ChangeCommunityClubAnnouncement": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_ChangeCommunityClubAnnouncement",
+        "parameters": [
+          {
+            "name": "ClubId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Announcement",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityChannel",
+        "parameters": [
+          {
+            "name": "ChannelName",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Introduction",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_UpdateCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_UpdateCommunityChannel",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "ChannelName",
+            "type": "string",
+            "in": "query"
+          },
+          {
+            "name": "Introduction",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteCommunityChannel",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetJoinedCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetJoinedCommunityChannel",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetCreatedCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetCreatedCommunityChannel",
+        "parameters": [
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetChannelMemberInformation": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetChannelMemberInformation",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetChannelOneMemberInformation": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetChannelOneMemberInformation",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Uid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_JoinCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_JoinCommunityChannel",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_FireCommunityChannelMember": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_FireCommunityChannelMember",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "MemberUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DissociateCommunityChannel": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DissociateCommunityChannel",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_CreateCommunityChannelComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_CreateCommunityChannelComment",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Content",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_DeleteCommunityChannelComment": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_DeleteCommunityChannelComment",
+        "parameters": [
+          {
+            "name": "CommentId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetDeletedCommunityChannelCommentRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetDeletedCommunityChannelCommentRecord",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_AppointCommunityChannelNewLeader": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_AppointCommunityChannelNewLeader",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "LeaderUid",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_InviteFriendAsCommunityChannelMember": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_InviteFriendAsCommunityChannelMember",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "FriendUids",
+            "type": "object",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetChannelCommentRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetChannelCommentRecord",
+        "parameters": [
+          {
+            "name": "ChannelId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Skip",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "Limit",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "StartAt",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "EndAt",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_GetNotificationRecord": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_GetNotificationRecord",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_MarkNotificationWithRead": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_MarkNotificationWithRead",
+        "parameters": [
+          {
+            "name": "NotificationType",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_BoxingRoomCreate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_BoxingRoomCreate",
+        "parameters": [
+          {
+            "name": "RoadSettingId",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "RoomType",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Type",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_BoxingRoomGetList": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_BoxingRoomGetList",
+        "parameters": [
+          {
+            "name": "RoomType",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "IsReservation",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "Type",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_BoxingRoomEnter": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_BoxingRoomEnter",
+        "parameters": [
+          {
+            "name": "RoomId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    },
+    "/UserLobby/C2L_BoxingReservationCreate": {
+      "post": {
+        "tags": [
+          "UserLobby"
+        ],
+        "description": "C2L_BoxingReservationCreate",
+        "parameters": [
+          {
+            "name": "Type",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "RoomType",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "StartUTCTimeTick",
+            "type": "number",
+            "in": "query"
+          },
+          {
+            "name": "MemberUid",
+            "type": "object",
+            "in": "query"
+          },
+          {
+            "name": "RoadSettingId",
+            "type": "number",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result"
+          }
+        }
+      }
+    }
+  }
+}

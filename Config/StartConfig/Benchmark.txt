@@ -1,0 +1,2 @@
+{ "_t" : "StartConfig", "C" : [{ "_t" : "OuterConfig", "Address" : "127.0.0.1:10002", "Address2" : "127.0.0.1:10002" }, { "_t" : "InnerConfig", "Address" : "127.0.0.1:20000" }], "AppId" : 1, "AppType" : "Manager", "ServerIP" : "*" }
+{ "_t" : "StartConfig", "C" : [{ "_t" : "ClientConfig", "Address" : "192.168.0.44:10002", "RobotMode" : 1, "UserCollectionPath" : "../../Benchmark/ThirdPartyUser.json", "Count" : 100, "RobotCount" : 4, "CurrentRobot" :1 , "RoadSettingId" : 1,"SportType":2}], "AppId" : 2, "AppType" : "Benchmark", "ServerIP" : "*" }

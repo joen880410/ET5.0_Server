@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyName>Hotfix</AssemblyName>
+    <RootNamespace>ETHotfix</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;SERVER;HOTFIX</DefineConstants>
+    <OutputPath>..\..\Bin\</OutputPath>
+    <NoWarn>1701;1702;0168;0169;0067</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;NETCOREAPP2_0;SERVER;HOTFIX</DefineConstants>
+    <OutputPath>..\..\Bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Other\**" />
+    <Compile Include="..\Library\Hotfix\Share\Utility\UserUtility.cs" Link="Share\Utility\UserUtility.cs" />
+    <Compile Include="..\Library\Model\Component\PingComponent.cs" Link="Share\PingComponent.cs" />
+    <Compile Include="..\Library\Model\Module\Helper\RewardCodeHelper.cs" Link="Helper\RewardCodeHelper.cs" />
+    <Compile Include="..\Library\Model\Share\Utility\GameUtility.cs">
+      <Link>Share\Utility\GameUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\Library\Model\Share\Utility\LanguageUtility.cs" Link="Share\Utility\LanguageUtility.cs" />
+    <Compile Include="..\Library\Model\Share\Utility\ManagerUtility.cs" Link="Share\Utility\ManagerUtility.cs" />
+    <Compile Include="..\Library\Model\Share\Utility\RecordUtility.cs" Link="Share\Utility\RecordUtility.cs" />
+	<Compile Include="..\Library\Model\Share\Utility\RoomUtility.cs">
+	  <Link>Share\Utility\RoomUtility.cs</Link>
+	</Compile>
+    <EmbeddedResource Remove="Other\**" />
+    <None Remove="Other\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Schedule\SchedulePattern.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Server.Model.csproj" />
+    <ProjectReference Include="..\ThirdParty\JWT\JWT\JWT.csproj" />
+    <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Bson\MongoDB.Bson.csproj" />
+    <ProjectReference Include="..\ThirdParty\MongoDBDriver\MongoDB.Driver\MongoDB.Driver.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Share\Other\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Schedule\SchedulePattern.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Flee" Version="2.0.0" />
+  </ItemGroup>
+</Project>

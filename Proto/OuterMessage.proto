@@ -1,0 +1,14 @@
+syntax = "proto3";
+package ETModel;
+
+message C2S_Ping // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message S2C_Ping // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}

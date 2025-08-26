@@ -1,0 +1,20 @@
+新增節點 - 先選節點再對地板按[左Shift+左鍵]，就會在剛剛選的節點附近新增
+刪除節點 - 滑鼠對準要刪除的節點按[左Ctrl+左鍵]
+記得把新增的Path加到PathRoadManager的參考列表
+1.BezierPath
+2.AttachColliderLayer : Default
+	地板碰撞打開(Default)
+3.Space : 3D(xyz)
+4.Control Mode : Automatic
+5.Control Spacing : 0.3
+6.Closed Path : 拉完後才打勾
+6.Normals Options
+	Show Normals Line 第一次建立時打勾看一下對不對，之後要關掉不然很卡
+	Flip Normals (推薦)不勾
+	Global Angle 90
+7.Display Options 
+	Show Path Bounds (推薦)不勾
+	Show Segment Bounds (推薦)不勾
+	Show Anchor Point Size 打勾
+	Constant Point Size (推薦)不勾
+	Handle Scale (推薦)20

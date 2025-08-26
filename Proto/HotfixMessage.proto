@@ -1,0 +1,333 @@
+syntax = "proto3";
+package ETHotfix;
+
+/*------複雜資料結構------*/
+
+message PlayerBaseInfo
+{
+	int64 Uid = 1;
+	string Name = 2;
+	int32 Location = 6;
+	int32 Birthday = 7;
+	int64 CreateAt = 8;
+	int64 LastOnlineAt = 9;
+	int64 Coin = 10;
+	int32 Language = 11;
+	string CloudStorageUri = 12;
+	string PortraitImageName = 13;
+	int32 Identity = 14;
+}
+
+/*------END------*/
+
+
+/*------Tip訊息------*/
+
+message G2C_MessageTip // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string TipContent = 1;
+}
+
+/*------END------*/
+
+
+/*------MapServer共用------*/
+
+message MapUnitInfo
+{
+	int64 MapUnitId  = 1;
+	int64 RoomId  = 2;
+	string Name = 3;
+	int32 Location = 4;
+	int64 Uid = 5;
+	int64 StartUTCTick = 6;
+}
+
+message M2C_MapUnitCreate // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	MapUnitInfo MapUnitInfo = 1;
+}
+
+message M2C_MapUnitUpdate // IActorMessage
+{
+	int64 ActorId = 93;
+	int64 MapUnitId = 1;
+}
+
+message M2C_MapUnitDestroy // IActorMessage
+{
+	int64 ActorId = 93;
+	int64 Uid = 1;
+}
+message C2M_MapUnitUpdate // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 MapUnitId = 1;
+}
+
+
+/*------END------*/
+
+
+/*------房間基底------*/
+
+message RoomInfo
+{
+	int64 RoomId  = 1;
+	string Title = 2;
+}
+/*------END------*/
+
+
+
+/*------帳號------*/
+
+/*連線*/
+message G2C_ForceDisconnect // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 DisconnectInfo = 1;
+}
+
+message PlayerStateData
+{
+	enum StateType
+	{
+		Start = 0;  //Parameter : 無
+		Lobby = 1;    //Parameter : 無
+		EnterRoom = 2;   //Parameter : 是否準備
+		StartRoom = 3;    //Parameter : 觀看角色Uid
+	}
+
+	StateType Type = 1;
+	repeated uint64 Parameters = 2;
+}
+
+/*登錄*/
+
+enum AuthenticationType
+{
+	Token = 0;
+	Guest = 1;
+	Account = 2;
+}
+message UserInfo
+{
+	string Email = 1;
+	string DeviceModel = 2;
+}
+
+message AccountInfo
+{
+	string Account = 1;
+	string Password = 2;
+}
+
+message AuthenticationInfo
+{
+	int32 Language = 1;
+	string Secret = 2;
+	AuthenticationType Type = 3;
+	UserInfo info =4;
+}
+
+message C2R_Authentication // IRequest
+{
+	int32 RpcId = 90;
+	AuthenticationInfo Info = 1;
+}
+
+message R2C_Authentication // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Address = 1;
+	int64 Key	   = 2;
+	//錯誤列表
+	repeated int32 ErrorCodeList = 4;
+	//需要使用的資料
+	PlayerBaseInfo Data = 5;
+	string Token = 6;
+	//連接第三方平台
+	repeated AuthenticationType LinkTypes = 7;
+	string HttpAddress = 8;
+	string DBAddress = 9;
+}
+
+message C2G_Logout // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_Logout // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*連接第三方*/
+
+message LinkInfo
+{
+	string Secret = 1;
+	AuthenticationType Type = 2;
+	int32 Language = 3;
+}
+
+message C2L_Link // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	LinkInfo Info = 1;
+}
+
+message L2C_Link // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated AuthenticationType LinkTypes = 1;
+}
+
+/*使用者編輯人物簡介*/
+
+enum SocialEnum
+{
+	None = 0;
+	Facebook = 1;
+	IG = 2;
+	Line = 3;
+}
+
+message C2L_UpdateUserProfile // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Name	= 1;	// 名子
+	int32 Sex = 2; 		//性別
+}
+
+message L2C_UpdateUserProfile // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UpdateUserLanguage // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Language = 1;	//
+}
+
+message L2C_UpdateUserLanguage // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------END------*/
+
+
+message C2G_LoginGate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Key = 1;	// 帐号
+}
+
+message G2C_LoginGate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 PlayerId = 1;
+}
+
+
+/*------Player------*/
+
+message C2L_SyncPlayerState // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	PlayerStateData StateData = 1;
+}
+
+message L2C_SyncPlayerState // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	enum OptionType
+	{
+		Nothing = 0;  //不處理
+		CanReturnEnterRoom = 1;    //問要不要回EnterRoom
+		CanReturnStartRoom = 2;    //問要不要回StartRoom
+		GetInfoEnterRoom = 3;    //更新EnterRoom資料
+		GetInfoStartRoom = 4;    //更新StartRoom資料
+		GoMap = 5;    //重跑進入StartRoom
+	}
+
+	OptionType Type = 1;
+	RoomInfo Info = 2;
+	int64 MapUnitId = 3;
+	repeated MapUnitInfo MapUnitInfos = 4;
+}
+
+/*------Player-END------*/
+
+/*------Team------*/
+
+message L2M_TeamModifyMember // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+	int64 Uid = 2;
+}
+
+message M2L_TeamModifyMember // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_TeamLose // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_TeamLose // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------Team-END------*/
+
+message C2L_DeleteAccount //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	
+}
+message L2C_DeleteAccount //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}

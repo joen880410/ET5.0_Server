@@ -1,0 +1,841 @@
+syntax = "proto3";
+package ETModel;
+
+message M2A_Reload // IRequest
+{
+    int32 RpcId = 90;
+}
+
+message A2M_Reload // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message G2G_LockRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Id = 1;
+    string Address = 2;
+}
+
+message G2G_LockResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message G2G_LockReleaseRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Id = 1;
+    string Address = 2;
+}
+
+message G2G_LockReleaseResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message DBSaveRequest // IRequest
+{
+    int32 RpcId = 90;
+
+    string CollectionName = 1;
+    ComponentWithId Component = 2;
+}
+
+
+message DBSaveBatchResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message DBSaveBatchRequest // IRequest
+{
+    int32 RpcId = 90;
+
+    string CollectionName = 1;
+    repeated ComponentWithId Components = 2;
+}
+
+message DBSaveResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message DBQueryRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Id = 1;
+    string CollectionName = 2;
+}
+
+message DBQueryResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    ComponentWithId Component = 1;
+}
+
+message DBQueryBatchRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    repeated int64 IdList = 2;
+}
+
+message DBQueryBatchResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    repeated ComponentWithId Components = 1;
+}
+
+message DBQueryJsonRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+}
+
+message DBQueryJsonResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    repeated ComponentWithId Components = 1;
+}
+
+message DBQueryJsonSortRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+	string SortJson = 3;
+	int32 Skip = 4;
+	int32 Limit = 5;
+}
+
+message DBQueryJsonSortResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    repeated ComponentWithId Components = 1;
+}
+
+message DBQueryCountCommandRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CommandJson = 1;
+}
+
+message DBQueryCountCommandResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    int64 Count = 1;
+}
+
+message DBQueryCommandRequest // IRequest
+{
+    int32 RpcId = 90;
+    string Json = 1;
+}
+
+message DBQueryCommandResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    repeated BsonDocument BsonDocuments = 1;
+}
+message DBQueryJsonCountRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+}
+
+message DBQueryJsonSkipLimitRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+	int64 Skip = 3;
+	int64 Limit = 4;
+}
+
+message DBQueryJsonCountResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    int64 Count = 1;
+}
+
+message DBAggregateJsonRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+}
+
+message DBAggregateJsonResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+	repeated BsonDocument BsonDocuments = 1;
+}
+
+message DBDeleteJsonRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    string Json = 2;
+}
+
+message DBDeleteJsonResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message DBUploadFileRequest // IRequest
+{
+    int32 RpcId = 90;
+    string FileName = 1;
+	bytes Source = 2;
+	BsonDocument Meta = 3;
+}
+
+message DBUploadFileResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+	ObjectId Id = 1;
+}
+
+message DBDownloadFileRequest // IRequest
+{
+    int32 RpcId = 90;
+    ObjectId Id = 1;
+}
+
+message DBDownloadFileResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+	bytes Source = 1;
+}
+
+//Cache
+//*************Start*************
+
+message CacheQueryByIdRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    int64 Id = 2;
+    repeated string Fields = 3;
+}
+
+message CacheQueryByUniqueRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+	string UniqueName = 2;
+    string Json = 3;
+}
+
+message CacheCreateRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    ComponentWithId Component = 2;
+}
+
+message CacheUpdateByIdRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+	int64 Id = 2;
+	string DataJson = 3;
+}
+
+message CacheQueryResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+	string Message = 92;
+    ComponentWithId Component = 93;
+}
+
+message CacheDeleteByIdRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+    int64 Id = 2;
+}
+
+message CacheDeleteByUniqueRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+	string UniqueName = 2;
+    string Json = 3;
+}
+
+message CacheDeleteResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+	string Message = 92;
+    bool IsSuccessful = 93;
+}
+
+message CacheGetAllIdsRequest // IRequest
+{
+    int32 RpcId = 90;
+    string CollectionName = 1;
+}
+
+message CacheGetAllIdsResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+	string Message = 92;
+    repeated int64 IdList = 1;
+}
+
+//*************END*************
+
+message ObjectAddRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Key = 1;
+    int64 InstanceId = 2;
+}
+
+message ObjectAddResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message ObjectRemoveRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Key = 1;
+}
+
+message ObjectRemoveResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message ObjectLockRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Key = 1;
+    int64 InstanceId = 2;
+    int32 Time = 3;
+}
+
+message ObjectLockResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message ObjectUnLockRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Key = 1;
+    int64 OldInstanceId = 2;
+    int64 InstanceId = 3;
+}
+
+message ObjectUnLockResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message ObjectGetRequest // IRequest
+{
+    int32 RpcId = 90;
+    int64 Key = 1;
+}
+
+message ObjectGetResponse // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    int64 InstanceId = 1;
+}
+
+message R2G_GetLoginKey // IRequest
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+}
+
+message G2R_GetLoginKey // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+
+    int64 Key = 1;
+}
+
+/*------大廳------*/
+
+message L2M_MapUnitCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	int64 GateSessionId = 2;
+	string MapUnitInfo = 3;
+}
+
+message M2L_MapUnitCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 MapUnitId  = 1;
+	string MapUnitInfo = 2;
+}
+
+message L2M_TeamCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	string Info = 2;
+	string Data = 3;
+}
+
+message M2L_TeamCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	string Json = 2;
+}
+
+message L2M_GetTeamData // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetTeamData // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string RoomJson = 1;
+	string TeamData = 2;
+	repeated string TeamMember = 3;
+}
+
+
+message L2M_DestroyRoom // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_DestroyRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+
+message L2M_GetTeamMember // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+	int64 Uid = 2;
+}
+
+message M2L_GetTeamMember // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string MemberData = 1;
+}
+
+message M2L_CreateInvite // IRequest
+{
+	int32 RpcId = 90;
+	string InviteInfo = 1;
+}
+
+message L2M_CreateInvite // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 InviteId = 1;
+	string Json = 2;
+}
+
+message L2M_DestroyMapUnit // IRequest
+{
+	int32 RpcId = 90;
+	int64 mapUnitId = 1;
+}
+
+message M2L_DestroyMapUnit // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_TeamLeave // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+}
+
+message M2L_TeamLeave // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2L_LobbyUnitCreate // IRequest
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+    int64 GateSessionId = 2;
+	int32 GateAppId = 3;
+	int32 LobbyAppId = 4;
+}
+
+message L2G_LobbyUnitCreate // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    int64 Uid = 1;
+    string Json = 2;
+}
+
+message G2L_LobbyUnitUpdate // IRequest
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+    bool IsOnline = 2;
+}
+
+message L2G_LobbyUnitUpdate // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message G2L_LobbyUnitDestroy // IRequest
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+}
+
+message L2G_LobbyUnitDestroy // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message L2M_SessionDisconnect // IActorLocationMessage
+{
+    int32 RpcId = 90;
+    int64 ActorId = 91;
+}
+
+message L2H_SessionDisconnect // IMessage
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+}
+
+message L2D_SessionDisconnect // IMessage
+{
+    int32 RpcId = 90;
+    int64 Uid = 1;
+}
+
+message R2H_AuthenticateHttp // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	string Token = 2;
+}
+
+message H2R_AuthenticateHttp // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message R2D_AuthenticateHttp // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	string Token = 2;
+}
+
+message D2R_AuthenticateHttp // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2H_CreateLinkHttp // IRequest
+{
+	int32 RpcId = 90;
+	int64 JacfitUid = 1;
+	int64 JSportUid = 2;
+}
+
+message H2L_CreateLinkHttp // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_GetUserList // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetUserList // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string info = 1;
+	repeated int64 UserList = 2;
+}
+
+message L2M_AICreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_AICreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------END------*/
+
+/*------Master------*/
+
+message S2M_RegisterService // IRequest
+{
+    int32 RpcId = 90;
+    ComponentWithId Component = 1;
+}
+
+message M2S_RegisterService // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    repeated ComponentWithId Components = 1;
+}
+
+message M2A_RegisterService // IMessage
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    ComponentWithId Component = 1;
+}
+
+message S2A_ConnectService // IRequest
+{
+    int32 RpcId = 90;
+}
+
+message A2S_ConnectService // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message S2M_DispatchCommand // IRequest
+{
+    int32 RpcId = 90;
+    string Command = 1;
+	int32 Apptype = 2;
+	int32 ConsoleService = 3;
+	int32 AppId = 4;
+}
+
+message M2S_DispatchCommand // IResponse
+{
+    int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	
+}
+
+message M2A_DispatchCommand // IRequest
+{
+	int32 RpcId = 90;
+    string Command = 1;
+}
+
+message A2M_DispatchCommand // IResponse
+{
+	int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message M2Map_RoomExpiredRequest // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message Map2M_RoomExpiredResponse // IResponse
+{
+	int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message L2Master_PlanCreate // IRequest
+{
+    int32 RpcId = 90;
+    int64 PlanId = 1;
+}
+
+message Master2L_PlanCreate // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message L2Master_PlanRewardSend // IRequest
+{
+    int32 RpcId = 90;
+    int64 PlanId = 1;
+}
+
+message Master2L_PlanRewardSend // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+/*------Master-End------*/
+
+/*------Location------*/
+
+message S2L_LockEvent // IRequest
+{
+    int32 RpcId = 90;
+    int64 Id = 1;
+    int64 Key = 2;
+    int64 Timeout = 3;
+}
+
+message L2S_LockEvent // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message S2L_UnlockEvent // IRequest
+{
+    int32 RpcId = 90;
+    int64 Id = 1;
+    int64 Key = 2;
+}
+
+message L2S_UnlockEvent // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+
+message L2S_ReceiveUnlockEvent // IMessage
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+    int64 Key = 1;
+	int64 Id = 2;
+}
+message L2G_WriteMapUnitInCache // IRequest
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+	string Json = 1;
+}
+
+message G2L_WriteMapUnitInCache // IResponse
+{
+    int32 RpcId = 90;
+    int32 Error = 91;
+    string Message = 92;
+}
+/*------Location-End------*/ 
+/*------Map---------------*/
+
+/*------Map-END-----------*/

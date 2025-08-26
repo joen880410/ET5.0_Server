@@ -1,0 +1,8428 @@
+syntax = "proto3";
+package ETHotfix;
+
+/*------複雜資料結構------*/
+
+message PlayerBaseInfo
+{
+	int64 Uid = 1;
+	string Name = 2;
+	int32 Sex = 3;
+	float Height = 4;
+	float Weight = 5;
+	int32 Location = 6;
+	int32 Birthday = 7;
+	int64 CreateAt = 8;
+	int64 LastOnlineAt = 9;
+	int64 Coin = 10;
+	repeated PlayerCharSetting CharSettingList = 11;
+	repeated PlayerPetSetting PetSettingList = 12;
+	PlayerFurnitureSetting FurnitureSetting = 13;
+	PlayerRideTotalInfo RideTotalInfo = 14;
+	PlayerRunTotalInfo RunTotalInfo = 15;
+	int32 Language = 16;
+	string CloudStorageUri = 17;
+	string PortraitImageName = 18;
+	int64 FestivalId = 19;
+	int64 SportId = 20;
+	int64 LeaderId = 21;
+	int64 MedalLeaderId = 22;
+	string Hobby = 23;
+	string SelfIntroduction = 24;
+	PlayerBoxingTotalInfo BoxingTotalInfo = 25;
+	int32 Identity = 26;
+	repeated int64 FestivalEmoji = 27;
+	PlayerPetBaseInfo PetBaseInfo = 28;
+}
+
+
+
+message PlayerCharSetting
+{
+	int64 CharacterId = 1;
+	int64 BicycleId = 2;
+	int64 HalmetId = 3;
+	int64 EffectId = 4;
+	int64 DecorationId = 5;
+	int64 ClothId = 6;
+	int64 PantsId = 7;
+	int64 GloveId = 8;
+	int64 ShoesId = 9;
+	int64 PetId = 10;
+	int64 SuitId = 11;
+	int64 BGloveId = 12;
+	int32 Gender =13;
+}
+
+message PlayerPetSetting
+{
+	int64 PetId = 1;
+	int64 PetSuitId = 2;
+	int64 PetFurColorId = 3;
+	string NickName = 4;
+	int32 Intimate = 5;
+	int32 Proficiency = 6;
+	int64 Mileage = 7;
+	int32 TouchTime = 8;
+	double Calories = 9;
+	int32 Satiety = 10;
+	int32 SportExp = 11;
+	int32 ExploreExp = 12;
+	int32 Stage = 13;
+}
+
+message PlayerFurnitureSetting
+{
+	int64 SofaId = 1;
+	int64 TableId = 2;
+	int64 TableDecorationId = 3;
+	int64 LeftCabinetId = 4;
+	int64 LeftDecorationId = 5;
+	int64 TrophyCabinetId = 6;
+	int64 RightDecorationId = 7;
+	int64 WallPaperId = 8;
+	int64 FloorId = 9;
+	int64 PanelId = 10;
+	int64 PennantId = 11;
+}
+
+//Battle Ride Team && Roaming
+message RideTotalInfo
+{
+	int64 Mileage = 1;
+	int64 CumulativeTime = 2;
+	double AverageHeartRate = 3; 
+	float AverageSpeed = 4;
+	float TopSpeed = 5;
+	float Calories = 6;
+	int32 DeviceType = 7;
+}
+
+message PlayerRideTotalInfo
+{
+	int64 Mileage = 1;
+	int64 CumulativeTime = 2;
+	double AverageHeartRate = 3;
+	float AverageSpeed = 4;
+	float TopSpeed = 5;
+	float Calories = 6;
+	int32 DeviceType = 7;
+	
+}
+
+message PlayerRideRoadInfo
+{
+	int64 InfoId = 1;
+	int64 RoadId = 2;
+	int32 Rank  = 3;
+	int64 Mileage = 4;
+	int64 CumulativeTime = 5;
+	float AverageSpeed = 6;
+	float TopSpeed = 7;
+	float Calories = 8;
+	float Power = 9;
+	int64 RecordUTCTick = 10;
+	repeated BattleRideLeaderboardUnitInfo BattleLeaderboardUnitInfos = 11;
+	int32 RideType = 12;
+	int32 Tag = 13;
+	string Note = 14;
+	double AverageHeartRate = 15;
+	double TopHeartRate = 16;
+	bool IsPath = 17;
+	
+	
+}
+
+message PlayerBattleRideRecordInfo
+{
+	bytes RawData = 1;//紀錄避免以後計算式改變
+	float WheelDiameter = 2;
+	float Speed = 3;
+	float Power = 4;
+	float Calories = 5;
+	float RegulateProportion = 6;
+	float Altitude = 7;
+	float Latitude = 8;
+	float Longitude = 9;
+	float Distance = 10;
+	int64 UtcTime = 11;
+	int32 DeviceType = 12;
+	int32 HeartRate = 13;
+	int32 Cadence = 14;
+	
+}
+
+message PlayerBattleRideRecordInfoData
+{
+	repeated PlayerBattleRideRecordInfo List = 1;
+}
+
+//Battle Run Team && Roaming
+message RunTotalInfo
+{
+	int64 Mileage = 1;
+	int64 CumulativeTime = 2;
+	float AverageSpeed = 3;
+	float TopSpeed = 4;
+	float Calories = 5;
+	double TotalCadence = 6;
+	float AverageCadence = 7;
+	float TopCadence = 8;
+	double TotalPace = 9;
+	float AveragePace = 10;
+	float TopPace = 11;
+	double AverageHeartRate = 12;
+	int64 SendCount = 13;
+	int64 TotalStepCount = 14;
+	int32 DeviceType = 15;
+}
+
+message PlayerRunTotalInfo
+{
+	int64 Mileage = 1;
+	int64 CumulativeTime = 2;
+	float AverageSpeed = 3;
+	float TopSpeed = 4;
+	float Calories = 5;
+	double TotalCadence = 6;
+	float TopCadence = 7;
+	float AverageCadence = 8;
+	double TotalPace = 9;
+	float TopPace = 10;
+	float AveragePace = 11;
+	double AverageHeartRate = 12;
+	int64 SendCount = 13;
+	int64 TotalStepCount = 14;
+	int32 DeviceType = 15;
+	repeated PlayerRunRoadInfo RunRoadInfos = 16;
+}
+
+message PlayerRunRoadInfo
+{
+	int64 InfoId = 1;
+	int64 RoadId = 2;
+	int32 Rank  = 3;
+	int64 Mileage = 4;
+	int64 CumulativeTime = 5;
+	float AverageSpeed = 6;
+	float TopSpeed = 7;
+	float BattleCalories = 8;
+	float CardioCalories = 9;
+	float AverageCadence = 10;
+	float TopCadence = 11;
+	float AveragePace = 12;
+	float TopPace = 13;
+	int64 TotalStepCount = 14;
+	int64 RecordUTCTick = 15;
+	repeated BattleRunLeaderboardUnitInfo BattleLeaderboardUnitInfos = 16;
+	int32 RunType = 17;
+	int32 Tag = 18;
+	string Note = 19;
+	double AverageHeartRate = 20;
+	double TopHeartRate = 21;
+	bool IsPath = 22;
+}
+
+message PlayerBattleRunRecordInfo
+{
+	bytes RawData = 1;//紀錄避免以後計算式改變
+	float Speed = 2;
+	float Cadence = 3;
+	float Pace = 4;
+	float Calories = 5;
+	float RegulateWalkStrideProportion = 6;
+	float RegulateRunStrideProportion = 7;
+	float Altitude = 8;
+	float Latitude = 9;
+	float Longitude = 10;
+	float Distance = 11;
+	int64 UtcTime = 12;
+	int32 DeviceType = 13;
+	int32 HeartRate = 14;
+}
+
+message PlayerBattleRunRecordInfoData
+{
+	repeated PlayerBattleRunRecordInfo List = 1;
+}
+
+message PlayerTaskExpressionInfoData
+{
+	int64 TaskId = 1;
+	repeated PlayerTaskExpressionInfo List = 2;
+}
+
+message PlayerTaskExpressionInfo
+{
+	int64 ConditionId = 1;
+	string Value = 2;
+}
+//Battle Boxing Team & Level
+message BoxingData
+{
+	float Power = 1;
+	float Speed = 2;
+	float Direction = 3;
+	int64 BoxingType = 4;
+	int64 BoxingScore = 5;
+	int32 Rhythm = 6;
+}
+message BoxingCombo
+{
+	int32 Terrible = 1;
+    int32 Bad = 2;
+    int32 Good = 3;
+    int32 Perfect = 4;
+}
+message BoxingTotalInfo
+{
+	int64 Score = 1;
+	float Calories = 2;
+	float NpcWinRate = 3;
+	float PlayerWinRate = 4;
+	float BossWinRate = 5;
+	float NpcTotalCount = 6;
+	float PlayerTotalCount = 7;
+	float BossTotalCount = 8;
+	int64 CumulativeTime = 9;
+	double AverageHeartRate = 10;
+}
+
+message PlayerBoxingTotalInfo
+{
+	int64 Score = 1;
+	float Calories = 2;
+	float NpcWinRate = 3;
+	float PlayerWinRate = 4;
+	float BossWinRate = 5;
+	float NpcTotalCount = 6;
+	float PlayerTotalCount = 7;
+	float BossTotalCount = 8;
+	repeated PlayerBoxingRoadInfo BoxingInfo = 9;
+	int64 CumulativeTime = 10;
+	double AverageHeartRate = 11;
+}
+
+message PlayerBoxingRoadInfo
+{
+	int64 Score = 1;
+	float Calories = 2;
+	repeated BoxingData BoxingData = 3;
+	int32 BoxingType = 4;
+	int64 RecordUTCTick = 5;
+	int32 Rank  = 6;
+	int64 CumulativeTime = 7;
+	BoxingCombo boxingCombo = 8;
+	int32 Tag = 9;
+	string Note = 10;
+	repeated BattleBoxingLeaderboardUnitInfo BattleLeaderboardUnitInfos = 11;
+	int32 RankType = 12;
+	repeated int64 HeartRate = 13;
+	int64 InfoId = 14;
+	int64 RoadId = 15;
+	int32 RoomPlayType  = 16;
+}
+message BoxingNPCSetting
+{
+	int64 id = 1;
+	PlayerCharSetting CharSetting = 2;
+	string name = 3;
+	int32 Difficulty = 4;
+	int64 Reward = 5;
+}
+/*------END------*/
+
+
+/*------Tip訊息------*/
+
+message G2C_MessageTip // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string TipContent = 1;
+}
+
+/*------END------*/
+
+
+/*------玩家資訊------*/
+
+message G2C_UpdatePlayerRideTotalInfo // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	PlayerRideRoadInfo RoadInfo = 1;
+	PlayerRideTotalInfo TotalInfo = 2;
+}
+
+message G2C_UpdatePlayerRunTotalInfo // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	PlayerRunRoadInfo RoadInfo = 1;
+	PlayerRunTotalInfo TotalInfo = 2;
+}
+message G2C_UpdatePlayerBoxingTotalInfo // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	PlayerBoxingRoadInfo RoadInfo = 1;
+	PlayerBoxingTotalInfo TotalInfo = 2;
+}
+/*------END------*/
+
+
+/*------MapServer共用------*/
+
+message MapUnitInfo
+{
+	int64 MapUnitId  = 1;
+	int64 RoomId  = 2;
+	string Name = 3;
+	int32 Location = 4;
+	double DistanceTravelled = 5;
+	int32 PathId = 6;
+	PlayerCharSetting CharSetting = 7;
+	PlayerPetSetting PetSetting = 8;
+	float SpeedMS = 9;
+	int64 StartUTCTick = 10;
+	int64 Uid = 11;
+	int64 DebugId = 12;
+	int32 CurrentSportType = 13;
+	int64 MedalId = 14;
+	int32 Hp = 15;
+	double Calories = 16;
+	int64 Score = 17;
+	int64 offset = 18;
+}
+
+message MapUnitInfo_Global
+{
+	int64 MapUnitId  = 1;
+	string Name = 2;
+	int32 Location = 3;
+	int32 CurrentSportType = 4;
+	int64 Uid = 5;
+	int64 MedalId = 6;
+}
+
+message M2C_MapUnitCreate // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	MapUnitInfo MapUnitInfo = 1;
+}
+
+message M2C_MapUnitUpdate // IActorMessage
+{
+	int64 ActorId = 93;
+	int64 MapUnitId = 1;
+	double DistanceTravelledTarget = 2;
+	float SpeedMS = 3;
+	int64 DistanceTravelledUpdateUTCTick = 4;
+	int64 OffsetDistance = 5;
+}
+
+message M2C_MapUnitDestroy // IActorMessage
+{
+	int64 ActorId = 93;
+	int64 Uid = 1;
+}
+
+message M2C_SyncAllMapUnitInfo // IActorMessage
+{
+	int64 ActorId = 93;
+	repeated MapUnitInfo MapUnitInfoList = 1;
+}
+
+
+message C2M_MapUnitMoveOnBike // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	double DistanceTravelledTarget = 1;
+	float SpeedMS = 2;
+	float Calories = 3;
+	float Power = 4;
+	int32 DeviceType = 5;
+	int64 HeartRate = 6;
+}
+
+message C2M_MapUnitMoveOnRun // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	double DistanceTravelledTarget = 1;
+	float SpeedMS = 2;
+	float BattleCalories = 3;
+	float Cadence = 4;
+	float Pace = 5;
+	float CardioCalories = 6;
+	int64 TotalStepCount = 7;
+	int32 DeviceType = 8;
+	int64 HeartRate = 9;
+}
+
+message C2M_MapUnitOnBoxing // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	float Calories = 1;
+	repeated BoxingData boxingData = 2;
+	int64 Score = 3;
+	float CalculateScore = 4;
+	int32 boxingCombo =  5;
+	int64 HeartRate = 6;
+}
+
+message C2M_MapUnitReceiveReward // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated int64 ItemIdList = 1;
+	int64 SurpriseId = 2;
+	int32 Count = 3;
+}
+
+message C2M_MapUnitReceiveCardio // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+message M2C_MapUnitReceiveReward // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	int64 Score = 2;
+	repeated EquipmentInfo ItemList = 3;
+}
+
+message C2M_LookAtTarget // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+}
+
+message M2C_LookAtTarget // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message C2M_EnforceSyncMapUnitsInfo // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated int64 MapUnitIdList = 1;
+}
+
+message M2C_EnforceSyncMapUnitsInfo // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated M2C_MapUnitUpdate MapUnitSyncInfoList = 1;
+}
+message C2M_TeamGoBattleRun // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+message M2C_TeamGoBattleRun // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message M2C_TeamGoBattleRunAllDone // IActorMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message M2C_TeamReward // IActorMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	int64 Score = 2;
+}
+message L2M_EventReservationGetRoomInfo // IRequest
+{
+	int32 RpcId = 90;
+	int64 ReservationId = 1;
+}
+
+message M2L_EventReservationGetRoomInfo // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ReleaseTime = 1;
+	int64 EventId = 2;
+	RoomInfo Info = 3;
+	repeated EventReservationMemberData Members = 4;
+}
+
+
+/*------END------*/
+
+
+/*------全體列表用------*/
+
+message M2C_MapUnitGlobalCreate // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	MapUnitInfo_Global GlobalInfo = 1;
+}
+
+message M2C_MapUnitGlobalDestroy // IActorMessage
+{
+	int64 ActorId = 93;
+	int64 MapUnitUid = 1;
+}
+
+/*------END------*/
+
+
+/*------房間基底------*/
+
+message RoomInfo
+{
+	int64 RoomId  = 1;
+	string Title = 2;
+	int64 RoadSettingId = 3;
+	int32 MaxMemberCount = 4;
+	int32 NowMemberCount = 5;
+	int32 SportTypeFlag = 6;
+	int32 RoundCount = 7;
+	int32 RoomBattlePlayType = 8;
+	repeated int32 RoadRewardIds = 9;
+	int32 RoomExtraType = 10;
+}
+/*------END------*/
+
+/*------漫騎------*/
+
+message RoamingRoomData
+{
+
+}
+
+message C2M_SaveRideRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string Note = 1;
+}
+
+message M2C_SaveRideRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------END------*/
+
+/*--------------------------隊伍預約---Start--------------------------------*/
+
+
+message ReservationAllData
+{
+	int64 ReservationId = 1;
+	string SenderName = 2;
+	int64 SenderUid = 3;
+	repeated int64 MemberUid = 4;
+	int64 RoadSettingId = 5;
+	int64 AwakeUTCTimeTick = 6;
+	int64 StartUTCTimeTick = 7;
+	int32 ReservationType = 8;
+	int32 SportTypeFlag = 9;
+	int32 RoundCount = 10;
+	int32 RoomBattlePlayType = 11;
+	int32 RoomType = 12;
+	int32 RoomExtraType = 13;
+	TeamAIData AIData = 14;
+}
+
+message ReservationData
+{
+	int64 ReservationId = 1;
+	string SenderName = 2;
+	int64 SenderUid = 3;
+	int64 StartUTCTimeTick = 4;
+	int32 ReservationType = 5;
+	int32 SportTypeFlag = 6;
+	int32 RoomBattlePlayType = 7;
+	int32 RoomType = 8;
+	int32 RoomExtraType = 9;
+}
+
+message ReservationMemberData
+{
+	int64 Uid = 1;
+	string Name = 2;
+	int32 Location = 3;
+	int64 MedalId = 4;
+	string PortraitImageName = 5;
+	int32 MemberIndex = 6;
+}
+
+message EventReservationMemberData
+{
+	int64 Uid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+}
+
+message G2C_TeamReservationAdd // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	ReservationData ReservationData = 1;
+}
+
+message G2C_TeamReservationRemove // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ReservationId = 1;
+}
+/*------END------*/
+
+/*--------------------------隊伍邀請---Start--------------------------------*/
+
+message InviteData
+{
+	int64 InviteId = 1;
+	string SenderName = 2;
+	int64 SenderUid = 3;
+	int64 ReceiverUid = 4;
+	int64 TeamRoomId = 5;
+	int64 RoadSettingId = 6;
+	int32 SportTypeFlag = 7;
+}
+
+message C2M_TeamInvite // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ReceiverUid = 1;
+}
+
+message M2C_TeamInvite // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message G2C_TeamInviteReceiver // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string SenderName = 1;
+	int64 InviteId = 2;
+}
+
+message G2C_TeamInviteTargerRefuse // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 RefuseUid = 1;
+}
+
+/*--------------------------隊伍邀請----END---------------------------------*/
+
+/*----------------------------隊伍---Start--------------------------------*/
+
+message TeamMemberData
+{
+	int32 MemberIndex = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	int32 Location = 4;
+	float Progress = 5;
+	bool LoadingDone = 6;
+	bool IsReady = 7;
+	PlayerCharSetting CharSetting = 8;
+	PlayerPetSetting PetSetting = 9;
+	int64 MedalId = 10;
+	string PortraitImageName = 11;
+	int32 MapUnitType = 12;
+}
+
+message TeamRoomData
+{
+	int64 LeaderUid = 1;
+	string LeaderName = 2;
+	int64 StartUTCTimeTick = 3;
+	int32 RoomBattleType = 4;
+	int32 RoomExtraType = 5;
+}
+
+/*----隊伍中廣播---Start----*/
+
+message M2C_TeamGoBattleProgressReceiver // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	float Progress = 2;
+}
+
+message M2C_TeamGoBattleProgressAllDone // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 StartUTCTick = 1;
+}
+
+message M2C_TeamGoBattle // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	// 自己的unit id
+	int64 MapUnitId = 1;
+	// 全體玩家資訊
+	repeated MapUnitInfo MapUnitInfos = 2;
+	string Flag = 3;
+}
+
+message M2C_TeamGoLobby // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+enum TeamLoseType
+{
+	Kicked = 0;
+	Disband = 1;
+	Other = 2;
+	LoadingTimeOut = 3;
+}
+
+message M2C_TeamLose // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	// 失去隊伍原因
+	TeamLoseType LoseType = 1;
+}
+
+message M2C_TeamModifyData // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+}
+
+message M2C_TeamModifyMember // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	TeamMemberData MemberData = 2;
+}
+
+message M2C_TeamReadyModify // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	bool IsReady = 2;
+}
+
+/*----隊伍中廣播---End----*/
+
+
+/*----隊伍中RPC---Start----*/
+
+message C2M_TeamGoBattleProgress // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	float Progress = 1;
+}
+
+message C2M_TeamReady // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	bool IsReady = 1;
+}
+
+message M2C_TeamReady // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+/*----隊伍中RPC---End----*/
+
+
+/*----隊伍中隊長RPC---Start----*/
+message C2M_TeamRun // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+message M2C_TeamRun // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2M_TeamKick // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+}
+
+message M2C_TeamKick // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2M_TeamDeliveryLeader // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+}
+
+message M2C_TeamDeliveryLeader // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2M_TeamDisband // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+message M2C_TeamDisband // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2M_ActivityTeamInvite // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+}
+
+message M2C_ActivityTeamInvite // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*----隊伍中隊長RPC---END----*/
+
+
+/*----------------------------隊伍---END--------------------------------*/
+
+/*-------------------------隊伍排行榜---Start--------------------------------*/
+
+message BattleRideLeaderboardUnitInfo
+{
+	int64 RecordId = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	double DistanceTravelledTarget = 4;
+	int32 Location = 5;
+	string PortraitImageName = 6;
+	float TotalCalories = 7;
+	int32 MapUnitType = 8;
+}
+
+message BattleRunLeaderboardUnitInfo
+{
+	int64 RecordId = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	double DistanceTravelledTarget = 4;
+	int32 Location = 5;
+	string PortraitImageName = 6;
+	float TotalCalories = 7;
+	double TotalCadence = 8;
+	double TotalPace = 9;
+	int64 SetCount = 10;
+	int64 TotalStepCount = 11;
+	int32 MapUnitType = 12;
+}
+message BattleBoxingLeaderboardUnitInfo
+{
+	int64 RecordId = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	int32 Location = 4;
+	string PortraitImageName = 5;
+	int64 TotalScore = 6;
+	repeated BoxingData BoxingDatas = 7;
+	BoxingCombo BoxingCombo = 8;
+	int64 CumulativeTime = 9;
+	repeated int64 HeartRate = 10;
+	float TotalCalories = 11;
+	int32 MapUnitType = 12;
+}
+message M2C_BattleRideLeaderboard // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated BattleRideLeaderboardUnitInfo BattleLeaderboardUnitInfos = 1;
+}
+
+message M2C_BattleRunLeaderboard // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated BattleRunLeaderboardUnitInfo BattleLeaderboardUnitInfos = 1;
+}
+message M2C_BattleBoxingLeaderboard // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated BattleBoxingLeaderboardUnitInfo BattleLeaderboardUnitInfos = 1;
+	int32 RankType = 2;
+}
+
+/*----------------------------隊伍---END--------------------------------*/
+
+
+/*------帳號------*/
+
+/*連線*/
+message G2C_ForceDisconnect // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 DisconnectInfo = 1;
+}
+
+message PlayerStateData
+{
+	enum StateType
+	{
+		Start = 0;  //Parameter : 無
+		Lobby = 1;    //Parameter : 無
+		EnterRoom = 2;   //Parameter : 是否準備
+		StartRoom = 3;    //Parameter : 觀看角色Uid
+	}
+
+	StateType Type = 1;
+	repeated uint64 Parameters = 2;
+	int32 CurrentSportType = 3;
+}
+
+message C2G_SyncPlayerState_Return // IRequest
+{
+	int32 RpcId = 90;
+	bool IsReturn = 1;
+}
+
+message G2C_SyncPlayerState_Return  // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+
+/*註冊*/
+message C2R_SignUp // IRequest
+{
+	int32 RpcId = 90;
+	string	Email	 = 1;	// 信箱
+	string	Password = 2;	// 密碼
+	string	Secret = 3;	// 秘密
+}
+
+message R2C_SignUp // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int32 ErrorCodeList = 4;		//錯誤列表
+}
+
+
+/*登錄*/
+
+enum AuthenticationType
+{
+	Token = 0;
+	Guest = 1;
+	FaceBook = 2;
+	AppleId = 3;
+	Account = 4;
+	Google = 5;
+	JAccount = 6;
+}
+message UserInfo
+{
+	string Email = 1;
+	string DeviceModel = 2;
+}
+
+message AccountInfo
+{
+	string Email = 1;
+	string Account = 2;
+	string Password = 3;
+	int32 Language = 4;
+}
+
+message AuthenticationInfo
+{
+	int32 Language = 1;
+	string Secret = 2;
+	string FirebaseDeviceToken = 3;
+	AuthenticationType Type = 4;
+	string DeviceId = 5;
+	string VerId = 6;
+	UserInfo info =7;
+}
+
+message C2R_Authentication // IRequest
+{
+	int32 RpcId = 90;
+	AuthenticationInfo Info = 1;
+}
+
+message R2C_Authentication // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Address = 1;
+	int64 Key	   = 2;
+	//錯誤列表
+	repeated int32 ErrorCodeList = 4;
+	//需要使用的資料
+	PlayerBaseInfo Data = 5;
+	string Token = 6;
+	//連接第三方平台
+	repeated AuthenticationType LinkTypes = 7;
+	string HttpAddress = 8;
+	string DBAddress = 9;
+}
+
+message C2R_RegisterAccount // IRequest
+{
+	int32 RpcId = 90;
+	string Info = 1;
+}
+
+message R2C_RegisterAccount // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2G_Logout // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_Logout // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*連接第三方*/
+
+message LinkInfo
+{
+	string Secret = 1;
+	AuthenticationType Type = 2;
+	string VerId = 3;
+	int32 Language = 4;
+}
+
+message C2L_Link // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	LinkInfo Info = 1;
+}
+
+message L2C_Link // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated AuthenticationType LinkTypes = 1;
+}
+
+/*使用者編輯人物簡介*/
+
+enum SocialEnum
+{
+	None = 0;
+	Facebook = 1;
+	IG = 2;
+	Line = 3;
+}
+
+message UpdateErrorInfo
+{
+	int64 id = 1;
+	int32 error = 2;
+}
+
+message C2L_UpdateUserProfile // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Name	= 1;	// 名子
+	int32 Sex = 2; 		//性別
+	float Height = 3;	 //身高
+	float Weight = 4;	 //體重
+	int32 Location = 5;		//國家
+	int32 Birthday = 6;	//生日
+	string Hobby = 7; // 嗜好
+	string SelfIntroduction = 8; // 自我介紹
+}
+
+message L2C_UpdateUserProfile // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UpdateUserCharacter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated PlayerCharSetting CharSettingList = 1;
+	int64 LeaderId = 2;
+}
+
+message L2C_UpdateUserCharacter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated UpdateErrorInfo ErrorInfo = 1;
+}
+
+message C2L_UpdateUserPet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated PlayerPetSetting PetSettingList = 1;
+}
+
+message L2C_UpdateUserPet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated UpdateErrorInfo ErrorInfo = 1;
+}
+
+message C2L_UpdateUserLanguage // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Language = 1;	//
+}
+
+message L2C_UpdateUserLanguage // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ShareOnSocial // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	SocialEnum SocialType = 1;
+}
+
+message L2C_ShareOnSocial // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnUserCoinCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	int64 Coin = 2;
+}
+
+/*------END------*/
+
+/*使用者道具&裝備*/
+
+message EquipmentInfo
+{
+	int64 Id = 1;
+	int64 ConfigId = 2;
+	int32 Count = 3;
+}
+
+message UserBagCapacity
+{
+	int32 UsedDecorationCount = 1;
+	int32 TotalDecorationCount = 2;
+}
+
+message C2L_GetUserAllEquipment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetUserAllEquipment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Uid = 1;
+	repeated EquipmentInfo EquipmentInfoList = 2;
+}
+
+message C2L_UnLockUserEquipment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ItemId = 1;
+}
+
+message L2C_UnLockUserEquipment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_BuyUserEquipment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ItemId = 1;
+	int32 Count = 2;
+}
+
+message L2C_BuyUserEquipment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int32 Count = 2;
+}
+
+message L2C_OnEquipmentsCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	repeated EquipmentInfo EquipmentInfoList = 2;
+	UserBagCapacity UserBagInfo = 3;
+}
+
+message L2C_OnEquipmentsDeleted // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	repeated EquipmentInfo EquipmentInfoList = 2;
+	UserBagCapacity UserBagInfo = 3;
+}
+
+/*------END------*/
+
+/*關係表*/
+
+message RelationshipSimpleInfo
+{
+	string Name = 1;
+	int64 Record = 2;
+	int64 DisconnectTime = 3;
+	int64 Uid = 4;
+	int32 Location = 5;
+	int32 RelationshipType = 6;
+	string PortraitImageName = 7;
+}
+
+message C2L_GetRelationshipList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetRelationshipList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 TotalCount = 93;
+	repeated RelationshipSimpleInfo RelationshipList = 94;
+}
+
+message C2L_AddRelationship // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_AddRelationship // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_NotifyRelationshipState // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	RelationshipSimpleInfo Info = 2;
+}
+
+message C2L_RemoveRelationship // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_RemoveRelationship // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_RefreshStranger // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Skip = 1;
+	int64 Limit = 2;
+}
+
+message L2C_RefreshStranger // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 TotalCount = 93;
+	repeated RelationshipSimpleInfo RelationshipList = 94;
+}
+
+/*------END------*/
+
+/*關係表(邀請)*/
+
+message RelationshipApplyInfo
+{
+	int64 ApplyId = 1;
+
+	string SenderName = 2;
+	int64 SenderUid = 3;
+	int32 SenderLocation = 4;
+	int64 SenderMileage = 5;
+
+	string ReceiverName = 6;
+	int64 ReceiverUid = 7;
+	int32 ReceiverLocation = 8;
+	int64 ReceiverMileage = 9;
+
+	string SenderPortraitImageName = 10;
+	string ReceiverPortraitImageName = 11;
+}
+
+message C2L_GetRelationshipApplyList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	bool IsRequested = 1;
+}
+
+message L2C_GetRelationshipApplyList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 TotalCount = 93;
+	repeated RelationshipApplyInfo RelationshipApplyList = 94;
+}
+
+message L2C_NotifyRelationshipApplyState // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 DeleteApplyId = 1;
+	RelationshipApplyInfo AddApplyInfo = 2;
+	bool IsRequested = 3;
+}
+
+message C2L_RefreshRelationshipApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	bool IsRequested = 1;
+}
+
+message L2C_RefreshRelationshipApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 TotalCount = 93;
+	repeated RelationshipApplyInfo RelationshipApplyList = 94;
+}
+
+message C2L_AcceptRelationshipApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ApplyId = 1;
+}
+
+message L2C_AcceptRelationshipApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_RefuseRelationshipApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ApplyId = 1;
+}
+
+message L2C_RefuseRelationshipApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_QueryRelationshipByUids // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 Uids = 1;
+}
+
+message L2C_QueryRelationshipByUids // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RelationshipSimpleInfo RelationshipList = 1;
+}
+
+message C2L_QueryRelationshipByName // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Name = 1;	
+	int32 Page = 2;
+}
+
+message L2C_QueryRelationshipByName // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RelationshipSimpleInfo RelationshipList = 1;
+}
+message C2L_CancelRelationshipApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ApplyId = 1;
+}
+
+message L2C_CancelRelationshipApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message L2C_OnCancelRelationshipApply // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ApplyId = 1;
+}
+/*------END------*/
+
+/*觀戰按讚*/
+
+message C2M_GiveEmoticon // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 MapUnitId = 1;
+	int32 EmoticonIndex = 2;
+}
+
+message M2C_GiveEmoticon // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string Name = 1;
+	int32 EmoticonIndex = 2;
+}
+
+message C2M_GiveAisatsu // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 MapUnitId = 1;
+	string Content = 2;
+}
+
+message M2C_GiveAisatsu // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	string Name = 1;
+	string Content = 2;
+}
+/*------END------*/
+
+/*公告*/
+
+message AnnouncementInfo
+{
+	string Title = 1;
+	string Context = 2;
+	string ImageBGName = 3;
+}
+message NormalAnnouncementInfo
+{
+	AnnouncementInfo info = 1; //包含活動標題與內容
+	repeated int32 RewardIds = 2;
+	int64 StartTime = 3;
+	int64 EndTime = 4;
+	int64 AnnouncementId = 5;
+	
+}
+message C2L_AnnouncementNormal // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_AnnouncementNormal // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated NormalAnnouncementInfo AnnouncementInfos = 1;
+}
+
+
+/*------END------*/
+
+message C2R_Login // IRequest
+{
+	int32 RpcId = 90;
+	string	Account	 = 1;	// 帐号
+	string	Password = 2;	// 密码
+}
+
+message R2C_Login // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Address = 1;
+	int64 Key	    = 2;
+}
+
+message C2G_LoginGate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Key = 1;	// 帐号
+}
+
+message G2C_LoginGate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 PlayerId = 1;
+}
+
+message C2M_TestActorRequest // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Info = 1;
+}
+
+message M2C_TestActorResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Info = 1;
+}
+
+message PlayerInfo // IMessage
+{
+	int32 RpcId = 90;
+}
+
+message C2G_PlayerInfo // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message G2C_PlayerInfo // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerInfo PlayerInfo = 1;
+	repeated PlayerInfo PlayerInfos = 2;
+	repeated string TestRepeatedString = 3;
+	repeated int32 TestRepeatedInt32 = 4;
+	repeated int64 TestRepeatedInt64 = 5;
+}
+
+/*------大廳------*/
+
+/*-選擇運動類型-*/
+
+message C2L_SetSportType // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 CurrentSportType = 1;
+}
+
+message L2C_SetSportType // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoamingRecordCount = 1;
+	int64 PublicTeamRecordCount = 2;
+	int64 PrivateTeamRecordCount = 3;
+	int64 EventPublicTeamRecordCount = 4;
+	int64 EventPrivateTeamRecordCount = 5;
+}
+
+/*-漫騎-END-*/
+
+/*-漫騎-*/
+
+message C2L_RoamingGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_RoamingGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RoomInfo Infos = 1;
+	repeated int64 UidIdList = 2;
+}
+
+message C2L_RoamingEnter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RoamingRoomId = 1;
+}
+
+message L2C_RoamingEnter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	MapUnitInfo SelfInfo = 1;
+	int64 RoadSettingId = 2;
+	repeated MapUnitInfo_Global GlobalInfos = 3;
+}
+
+/*-漫騎-END-*/
+
+/*-揪團&活動-*/
+message ActivityTeam
+{
+	int32 Count = 1;
+	int32 RoomBattlePlayType = 2;
+}
+message C2L_TeamGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	bool IsReservation = 1;
+	int32 RoomBattlePlayType = 2;
+}
+
+message L2C_TeamGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RoomInfo Infos = 1;
+	repeated TeamRoomData Datas = 2;
+}
+
+message C2L_TeamInviteAccept // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 InviteId = 1;
+}
+
+message L2C_TeamInviteAccept // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+	repeated TeamMemberData MemberDatas = 3;
+}
+
+message C2L_TeamEnter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 TeamRoomId = 1;
+}
+
+message L2C_TeamEnter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+	repeated TeamMemberData MemberDatas = 3;
+	repeated ReservationMemberData ReservationMemberDatas = 4;
+}
+
+message C2L_TeamCreate // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RoadSettingId = 1;
+	int32 RoundCount = 2;
+	int32 RoomBattlePlayType = 3;
+	int32 RoomExtraType = 4;
+	TeamAIData AIData = 5;
+}
+
+message L2C_TeamCreate // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+	repeated TeamMemberData MemberDatas = 3;
+}
+
+message C2L_TeamReservationJoin // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ReservationId = 1;
+}
+
+message L2C_TeamReservationJoin // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+	repeated TeamMemberData MemberDatas = 3;
+	repeated ReservationMemberData ReservationMemberDatas = 4;
+}
+
+message C2L_TeamReservationCreate // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RoadSettingId = 1;
+	int64 StartUTCTimeTick = 2;
+	int32 RoundCount = 3;
+	int32 RoomBattlePlayType = 4;
+	int32 RoomExtraType = 5;
+	TeamAIData AIData = 6;
+	repeated int64 MemberUid = 7;
+}
+
+message L2C_TeamReservationCreate // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_TeamInviteGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_TeamInviteGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated InviteData InviteDataList = 1;
+}
+
+message C2L_TeamInviteRefuseAll // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_TeamInviteRefuseAll // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_TeamInviteRefuse // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 InviteId = 1;
+}
+
+message L2C_TeamInviteRefuse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_TeamReservationCancel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ReservationId = 1;
+}
+
+message L2C_TeamReservationCancel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_TeamReservationGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_TeamReservationGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated ReservationData ReservationDatas = 1;
+}
+
+message C2L_GetReservationRoomInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ReservationId = 1;
+}
+
+message L2C_GetReservationRoomInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ReleaseTime = 1;
+	ReservationAllData Info = 2;
+	repeated ReservationMemberData Members = 3;
+}
+
+message C2L_RoamingLeave // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_RoamingLeave // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_TeamLeave // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_TeamLeave // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ActivityTeamGetCount // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_ActivityTeamGetCount // IActorLocationResponse
+{
+    	int32 RpcId = 90;
+    	int32 Error = 91;
+    	string Message = 92;
+	repeated ActivityTeam ActivityTeams= 1;
+}
+
+message G2C_ActivityTeamExhibited // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated ActivityTeam ActivityTeams = 1;
+}
+
+message G2C_ActivityTeamInvited // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 RoadSettingId = 1;
+	string ActivityTeamInviter = 2;
+}
+
+
+
+/*-揪團&活動-END-*/
+
+/*------Player------*/
+
+message C2L_SyncPlayerState // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	PlayerStateData StateData = 1;
+}
+
+message L2C_SyncPlayerState // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+
+	enum OptionType
+	{
+		Nothing = 0;  //不處理
+		CanReturnEnterRoom = 1;    //問要不要回EnterRoom
+		CanReturnStartRoom = 2;    //問要不要回StartRoom
+		GetInfoEnterRoom = 3;    //更新EnterRoom資料
+		GetInfoStartRoom = 4;    //更新StartRoom資料
+		GoMap = 5;    //重跑進入StartRoom
+	}
+
+	OptionType Type = 1;
+
+	RoomInfo Info = 2;
+	TeamRoomData Data = 3;
+	repeated TeamMemberData MemberDatas = 4;
+	repeated ReservationMemberData ReservationMemberDatas = 5;
+
+	int64 MapUnitId = 6;
+	repeated MapUnitInfo MapUnitInfos = 7;
+}
+
+message C2L_GetFileNameOfRideDetailedBriefInfo // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RideRecordId = 1;
+	int32 SportType = 2;
+}
+
+message L2C_GetFileNameOfRideDetailedBriefInfo // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string FileName = 1;
+}
+
+message M2C_GiveRideRecordId // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 RideRecordId = 1;
+	string Note = 2;
+}
+
+message M2C_GiveRunRecordId // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 RunRecordId = 1;
+	string Note = 2;
+}
+
+/*------Player-END------*/
+
+/*------Team------*/
+
+message L2M_TeamModifyMember // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+	int64 Uid = 2;
+}
+
+message M2L_TeamModifyMember // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_TeamLose // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_TeamLose // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------Team-END------*/
+
+/*------大廳-END------*/
+
+/*------Lobby <-----> Map------*/
+
+message L2M_MapUnitCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	int64 GateSessionId = 2;
+	MapUnitInfo MapUnitInfo = 3;
+}
+
+message M2L_MapUnitCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 MapUnitId  = 1;
+	MapUnitInfo MapUnitInfo = 2;
+}
+
+message L2M_TeamCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	RoomInfo Info = 2;
+	TeamRoomData Data = 3;
+}
+
+message M2L_TeamCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	string Json = 2;
+}
+
+message L2M_GetTeamData // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetTeamData // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string RoomJson = 1;
+	TeamRoomData TeamData = 2;
+	repeated TeamMemberData TeamMember = 3;
+	repeated ReservationMemberData ReservationTeamData = 4;
+}
+
+message L2M_GetAllMapUnitInfoOnRoom // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetAllMapUnitInfoOnRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated MapUnitInfo Data = 1;
+}
+
+message L2M_GetAllMapUnitGlobalInfoOnRoom // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetAllMapUnitGlobalInfoOnRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated MapUnitInfo_Global Data = 1;
+}
+
+message L2M_DestroyRoom // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_DestroyRoom // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_SetReservationMember // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+	repeated ReservationMemberData Data = 2;
+}
+
+message M2L_SetReservationMember // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_RunRoomOnTeam // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_RunRoomOnTeam // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_GetTeamMember // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+	int64 Uid = 2;
+}
+
+message M2L_GetTeamMember // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	TeamMemberData MemberData = 1;
+}
+
+message M2L_CreateInvite // IRequest
+{
+	int32 RpcId = 90;
+	InviteData InviteInfo = 1;
+}
+
+message L2M_CreateInvite // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 InviteId = 1;
+	string Json = 2;
+}
+
+message L2M_DestroyMapUnit // IRequest
+{
+	int32 RpcId = 90;
+	int64 mapUnitId = 1;
+}
+
+message M2L_DestroyMapUnit // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_RoamingLeave // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+}
+
+message M2L_RoamingLeave // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_TeamLeave // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+}
+
+message M2L_TeamLeave // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*------Lobby <-----> Map-END------*/
+/*------GM <-----> Http-------*/
+
+
+message C2L_ManagerSelectDistanceCount // IActorLocationRequest 
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser selectUser = 1;
+	int32  sportType  = 2;
+}
+message L2C_ManagerSelectDistanceCount // IActorLocationResponse 
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Count = 1;
+}
+
+message C2L_ManagerSelectUserCreateCount // IActorLocationRequest
+{
+
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser selectUser = 1;
+}
+
+message L2C_ManagerSelectUserCreateCount // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Count = 1;
+}
+
+message C2L_ManagerSelectUserTeaminfoCount // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser selectUser = 1;
+	int32  sportType  = 2;
+}
+
+message L2C_ManagerSelectUserTeaminfoCount // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Count = 1;
+}
+message C2L_ManagerGift // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	int32 GiftId = 2;
+}
+
+message L2C_ManagerGift // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerDelete // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	int32 GiftId = 2;
+}
+
+message L2C_ManagerDelete // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerSelectUserCreate // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser SelectUser = 1;
+}
+
+message L2C_ManagerSelectUserCreate // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SelectUser SelectUser = 1;
+}
+
+message C2L_ManagerSelectUserOnline // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser SelectUser = 1;
+}
+
+message L2C_ManagerSelectUserOnline // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SelectUser SelectUser = 1;
+}
+
+message C2L_ManagerSelectDistance // IActorLocationRequest 
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser SelectUser = 1;
+	int32 Type =2;
+}
+
+message L2C_ManagerSelectDistance // IActorLocationResponse 
+{
+
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SelectUser SelectUser = 1;
+
+}
+
+message C2L_ManagerSendAttachment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated int64 Uids = 1;
+	repeated EmailRewardAttachInfo Attachments = 2;
+	EmailLanguageInfo Message = 3;
+	int32 LanguageType = 4;
+}
+
+message L2C_ManagerSendAttachment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerSendAttachmentForAllUser // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated EmailRewardAttachInfo Attachments = 1;
+	EmailLanguageInfo Message = 2;
+	int32 LanguageType = 3;
+}
+
+message L2C_ManagerSendAttachmentForAllUser // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerSendCoin // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	int64 Coin = 2;
+	bool IsSendAllUser = 3;
+}
+
+message L2C_ManagerSendCoin // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message SelectUser
+{
+	int64 FromTime = 1;
+	int64 ToTime = 2;
+	int64 FromDistance = 3;
+	int64 ToDistance = 4;
+	int64 Uid = 5;
+	int64 SelectDistance = 6;
+	int64 ALLDistance = 7;
+	string Username = 8;
+	repeated int64 EquipmentID = 9;
+	repeated SelectUserLog Logs = 10;
+	int64 skip = 11;
+	int64 limit = 12;
+}
+
+message SelectUserLog
+{
+	int32 SportType = 1;
+	int32 Gender = 2;
+	int32 Birthday = 3;
+	int64 CreateAtTime = 4;
+};
+
+message SelectTeamInfo
+{
+	int64 Time = 1;
+	int64 PlayTime = 2;
+	int64 MapId = 3;
+	int64 Mileage = 4;
+	int64 AverageSpeed = 5;
+	int64 TopSpeed = 6;
+	double BattleCalories = 7;
+	double CardioCalories = 8;
+	repeated int64 RankList = 9;
+	int64 skip = 10;
+	int64 limit = 11;
+}
+
+message C2L_ManagerSelectUser // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message L2C_ManagerSelectUser // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 OnlionUser = 1;
+	int64 RegisteredUser = 2;
+}
+
+message C2L_ManagerSelectUserTeaminfo // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	SelectUser SelectUser = 1;
+	int32 Type =2;
+}
+
+message L2C_ManagerSelectUserTeaminfo // IActorLocationResponse
+{
+
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SelectTeamInfo SelectTeamInfo = 1;
+
+}
+
+message C2L_ManagerServerConfig // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	string MessageTip = 1;
+	string Announcement = 2;
+	string FileName = 3;
+}
+
+message L2C_ManagerServerConfig // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message RoomInfoAndPlayer
+{
+	int64 RoomId  = 1;
+	string Title = 2;
+	int64 RoadSettingId = 3;
+	int32 MaxMemberCount = 4;
+	int32 RideMemberCount = 5;
+	int32 RunMemberCount = 6;
+	repeated int64 UserIdList = 7;
+}
+
+message C2L_ManagerRoamingGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_ManagerRoamingGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RoomInfoAndPlayer Infos = 1;
+
+}
+
+message C2L_ManagerTeamGetList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 SportType = 1;
+	bool IsReservation = 2;
+}
+
+message L2C_ManagerTeamGetList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RoomInfo Infos = 1;
+	repeated TeamRoomData Datas = 2;
+
+}
+
+message C2L_ManagerTeamPlayerList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 RoomId = 1;
+}
+
+message L2C_ManagerTeamPlayerList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated SelectUser Datas = 1;
+}
+
+
+message L2M_GetUserList // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_GetUserList // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoomInfo info = 1;
+	repeated int64 UserList = 2;
+}
+
+message C2L_SelectUserInfo // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlayerUID = 1;
+}
+
+message L2C_SelectUserInfo // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerBaseInfo Data = 1;
+	string LeaderMsg = 2;
+	string TaskMsg = 3;
+}
+
+message C2L_ManagerFireBase // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Message = 1;
+	int32 LanguageType = 2;
+	bool isFirebase = 3;
+	bool isMassageTip = 4;
+}
+
+message L2C_ManagerFireBase // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerUserPetConfigId // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_ManagerUserPetConfigId // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 PetIdList = 1;
+}
+
+message C2L_ManagerUserPetInfos // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetID = 2;
+}
+
+message L2C_ManagerUserPetInfos // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerPetSetting PetInfos = 1;
+	int32 SportLevel = 2;
+	int32 ExploreLevel = 3;
+	int32 TotalLevel = 4;
+}
+
+
+message C2L_ManagerUserPetLogs // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetID = 2;
+	int32 Page = 3;
+}
+
+message L2C_ManagerUserPetLogs // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated JPetLogInfo PetLogs = 1;
+	int32 MaxPage = 2;
+}
+
+message C2L_ManagerUserPetTownLogs // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetID = 2;
+	int32 Page = 3;
+}
+
+message L2C_ManagerUserPetTownLogs // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated JPetTownLogInfo PetTownLogs = 1;
+	int32 MaxPage = 2;
+}
+
+/*------------自動推播-------------*/
+message BroadcastSampleInfo
+{
+	int64 BroadcastId = 1;
+	BroadcastInfo Info = 2;
+	repeated BroadcastRoomInfo RoomInfos = 3;
+	repeated int64 TaskIds = 4;
+}
+
+message BroadcastInfo
+{
+	string Message = 1; // 推播消息
+	string ReleaseCron = 2; // 發布Cron表達式
+	string ExpiredCron = 3; // 過期Cron表達式
+	int64 ReleaseTime = 4; // 發布時間(轉DateTime用)
+	int64 ExpiredTime = 5; // 過期時間(轉DateTime用)
+	int32 LanguageType = 6;
+	bool IsFirebase = 7;
+}
+
+message BroadcastRoomInfo
+{
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+}
+
+message C2L_ManagerAutoBroadcast // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	BroadcastInfo Info = 1;
+	repeated BroadcastRoomInfo RoomInfos = 2;
+	repeated int64 TaskIds = 3;
+}
+
+message L2C_ManagerAutoBroadcast // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 BroadcastId = 1;
+}
+
+message C2L_ManagerDeleteAutoBroadcast // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 BroadcastId = 1;
+}
+
+message L2C_ManagerDeleteAutoBroadcast // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerGetAllAutoBroadcast // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_ManagerGetAllAutoBroadcast // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated BroadcastSampleInfo Infos = 1;
+}
+message Master2L_OnAutoBroadcastReleaseRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastReleaseRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message Master2L_OnAutoBroadcastExpiredRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastExpiredRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2L_ManagerGetUserAllEquipment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_ManagerGetUserAllEquipment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated EquipmentInfo EquipmentInfoList = 2;
+}
+message C2L_ManagerGetUserPostCount // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 FromTime = 2;
+	int64 ToTime = 3;
+	int32 SelectType = 4;
+}
+
+message L2C_ManagerGetUserPostCount // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 PostCount = 1;
+	CommunityMoodInfo Post = 2;
+}
+message C2L_ManagerGetUserChannelCount // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int32 SelectType = 2;
+	int32 Page = 3;
+	int64 ChannelId = 4;
+}
+
+message L2C_ManagerGetUserChannelCount // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ChannelCount = 1;
+	repeated CommunityChannelMemberInfo Channel = 2;
+	repeated CommunityChannelInfo ChannelInfo = 3;
+}
+message C2L_ManagerGetUserClubCount // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 SelectType = 2;
+	int32 FlagType = 3;
+	int32 Page = 4;
+}
+
+message L2C_ManagerGetUserClubCount // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ClubCount = 1;
+	repeated CommunityClubInfo ClubInfo = 2;
+}
+
+message C2L_ManagerUserTownConfigData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_ManagerUserTownConfigData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 TownIdList = 1;
+}
+
+message C2L_ManagerUserTownData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 TownId = 2;
+}
+
+message L2C_ManagerUserTownData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 PlayerCounts= 1;
+	repeated PetTownDecorationInfo DecorationList = 2;
+	repeated int64 PetIDList = 3;
+	int64 TownConfigId = 4;
+	int32 TownEvaluationCount = 5;
+	repeated int64 UnlockTownId = 6;
+}
+
+message C2L_ManagerShopData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int32 ItemType = 2;
+	int32 Page = 3;
+}
+
+
+message L2C_ManagerShopData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetItemInfo ShopInfos = 1;
+	int32 MaxPage = 2;
+}
+
+message C2L_ManagerFarmData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_ManagerFarmData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetFarmLandInfo FarmCropData = 1;
+	int32 PlayerCounts = 2;
+}
+
+message PetExploreMembers
+{
+	int64 Uid = 1;
+	int32 Point = 2;
+}
+
+message PetExploreRecordDetail
+{
+	int64 MapId=1;
+	int64 DoorId = 2;
+	int64 EpisodeId = 3;
+	int64 CreateTime = 4;
+	repeated PetExploreMembers Members = 5;
+	string EpisodeData = 6;
+	int64 RewardId = 7;
+	int64 PunishId = 8;
+	repeated PlayerPetSetting PetSetting = 9;
+	repeated int32 PetLevel = 10;
+} 
+
+message C2L_ManagerExploreEpisodeData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 MapId = 2;
+	int64 StartTime = 3;
+	int64 EndTime = 4;
+}
+
+message L2C_ManagerExploreEpisodeData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 PetEpisodeConifgIdList = 1;
+}
+
+message C2L_ManagerExploreRecordData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId = 2;
+	int64 StartTime = 3;
+	int64 EndTime = 4;
+	int32 Page = 5;
+}
+
+message L2C_ManagerExploreRecordData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetExploreRecordDetail PetExploreRecordLists = 1;
+	int32 MaxPage= 2;
+}
+
+
+
+message C2L_ManagerExploreEpisodeConfigData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 EpisodeType = 1;
+}
+
+message L2C_ManagerExploreEpisodeConfigData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 EpisodeIdList= 1;
+}
+
+message C2L_ManagerExploreDialogStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId= 2;
+}
+
+message L2C_ManagerExploreDialogStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 RewardIdList = 1;	
+	int32 RewardCount = 2;
+	repeated int64 PunishIdList = 3;
+	int32 PunishCount = 4;
+	int32 TotalCount = 5;
+}
+
+message C2L_ManagerExploreQuizStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId = 2;
+}
+
+message L2C_ManagerExploreQuizStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 QuizId = 1;
+	float Winper = 2;
+	int32 QuizCount = 3;
+	repeated int32 PlayerAnswerList = 4;
+	repeated int64 RewardIdList = 5;	
+	int32 RewardCount = 6;
+	repeated int64 PunishIdList = 7;
+	int32 PunishCount = 8;
+}
+
+
+message C2L_ManagerExploreRockAndPaperAndScissorsStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId = 2;
+}
+
+message L2C_ManagerExploreRockAndPaperAndScissorsStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	float WinPer = 1;
+	repeated int64 RewardIdList = 2;	
+	int32 RewardCount = 3;
+	int32 TotalCount = 4;
+	int32 MaxRound = 5;
+	repeated int32 RoundCountList = 6;
+}
+
+message C2L_ManagerExploreDetonateBombStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId = 2;
+}
+
+message L2C_ManagerExploreDetonateBombStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	float WinPer = 1;
+	repeated int64 RewardIdList = 2;	
+	int32 RewardCount = 3;
+	int32 TotalCount = 4;
+	int32 MaxRound = 5;
+	repeated int32 RoundCountList = 6;
+}
+
+message C2L_ManagerExploreLittleGameStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 EpisodeId = 2;
+}
+
+message L2C_ManagerExploreLittleGameStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 TotalCount = 1;
+	repeated int64 RewardIdList = 2;	
+	int32 RewardCount = 3;
+	repeated int64 PunishIdList = 4;
+	int32 PunishCount = 5;
+}
+
+message C2L_ManagerExploreMapConfigData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_ManagerExploreMapConfigData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 MapIdList=1;
+}
+
+message C2L_ManagerExploreDoorStatisticsData // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 MapId = 2;
+}
+
+message L2C_ManagerExploreDoorStatisticsData // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 DoorDetailList=1;
+	int32 TotalCount = 2;
+}
+
+/*------Manager <-----> Http-END------*/
+
+/*------郵件Mail<----->Http-------*/
+message C2L_SendMail // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Email email = 1;
+}
+
+message L2C_SendMail // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2L_GetMail // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlayerUID = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetMail // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated Email Email = 1;
+	int64 Count = 2;
+
+}
+
+message C2L_GetRewardAttachment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EmailId = 1;
+}
+
+message L2C_GetRewardAttachment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	repeated PlayerCharSetting CharaList = 2;
+	repeated PlayerPetSetting PetList = 3;
+	repeated int64 SceneList = 4;
+	repeated EquipmentInfo EquipList = 5;
+}
+
+message C2L_AcceptInviteAttachment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EmailId = 1;
+}
+
+message L2C_AcceptInviteAttachment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_RefuseInviteAttachment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EmailId = 1;
+}
+
+message L2C_RefuseInviteAttachment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_IsReadMail // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Email Email = 1;
+}
+message C2L_DeleteMail // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Email Email = 1;
+}
+message L2C_OnMailCreated // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Email Email = 1;
+}
+message L2C_OnMailDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EmailId = 1;
+}
+message Email
+{
+	string Playername = 1;
+	string Message = 2;
+	string Title = 3;
+	string Time = 4;
+	int64 Uid = 5;
+	bool IsRead = 6;
+	string GalleyUrl = 7;
+	int64 id = 8;
+	RewardAttachInfo AttachInfo = 9;
+	InviteAttachInfo InviteInfo = 10;
+}
+
+message EmailLanguageInfo
+{
+	string TitleZhTw = 1;
+	string TitleEn = 2;
+	string TitleJa = 3;
+	string ZhTw = 4;
+	string En = 5;
+	string Ja = 6;
+}
+
+message RewardAttachInfo
+{
+	bool IsGet = 1;
+	repeated EmailRewardAttachInfo Attachments = 2;
+}
+
+message EmailRewardAttachInfo
+{
+	int64 ConfigId = 1;
+	int32 AttachType = 2;
+	int32 Count = 3;
+}
+
+message InviteAttachInfo
+{
+	bool IsGet = 1;
+	int64 Id = 2;
+	int64 CallerUid = 3;
+	int64 TargetUid = 4;
+	int32 InviteType = 5;
+	string InviteInfo = 6;
+}
+
+message InviteClubInfo
+{
+	string ClubPortraitImageName = 1;
+	string ClubName = 2;
+	string LeaderName = 3;
+	string Introduction = 4;
+	int32 ClubType = 5;
+	int32 TotalMember = 6;
+	int32 MaxMember = 7;
+	double TotalCalories = 8;
+}
+
+message InviteChannelInfo
+{
+	string ChannelName = 1;
+	string LeaderName = 2;
+	string Introduction = 3;
+	string Portrait = 4;
+	int32 TotalMember = 5;
+	int32 MaxMember = 6;
+	bool StealthMode = 7;
+}
+
+/*------郵件Mail <-----> Http-END------*/
+/*------聊天Mail <-----> Http----------*/
+message C2M_TeamChat // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Chat Chat = 1;
+}
+message M2C_TeamChat // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	Chat Chat = 1;
+}
+message Chat
+{
+	int64 PlayerUID = 1;
+	string Message = 2;
+	int64 Time = 3;
+}
+
+/*--------------任務---------------*/
+message TaskTeamAllInfo
+{
+	repeated TaskTeamInfo Infos = 1;
+}
+
+message TaskTeamInfo
+{
+	int64 TaskId = 1;
+	TaskInfo Info = 2;
+}
+
+message TaskInfo
+{
+	bool IsOpen = 3;
+	TaskAllConditionInfo ConditionInfo = 4;
+}
+
+message TaskAllConditionInfo
+{
+	string OpenExpression = 1;
+	string CompleteExpression = 2;
+	repeated TaskEntityConditionInfo OpenConditionInfos = 3;
+	repeated TaskEntityConditionInfo CompleteConditionInfos = 4;
+}
+
+message TaskEntityConditionInfo
+{
+	int64 ConditionId = 1;
+	string ValueName = 2;
+	string KeyName = 3;
+}
+
+message TaskSimpleInfo
+{
+	int64 Uid = 1;
+	int64 TaskId = 2;
+	bool IsDone = 3;
+	bool IsReceive = 4;
+	repeated TaskProgressInfo ProgressInfo = 5;
+}
+
+message TaskTeamSimpleInfo
+{
+	int64 TeamId = 1;
+	int32 TotalMemberCount = 2;
+	TaskProgressInfo TotalProgressInfo = 3;
+	repeated TaskTeamSeriesInfo SeriesInfos = 4;
+	repeated TaskMemberProgressInfo MemberProgressInfos = 5;
+}
+
+message TaskTeamSeriesInfo
+{
+	int64 TaskId = 1;
+	bool IsDone = 2;
+}
+
+message TaskProgressInfo
+{
+	int64 ConditionId = 1;
+	float Value = 2;
+}
+
+message TaskMemberProgressInfo
+{
+	int64 Uid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	int64 ConditionId = 5;
+	float Value = 6;
+}
+
+message ResetTaskSimpleInfo
+{
+	int64 Uid = 1;
+	int64 TaskId = 2;
+	bool IsDone = 3;
+	bool IsReceive = 4;
+}
+
+message ResetResult
+{
+	int64 Uid = 1;
+	repeated int64 TaskIds = 2;
+	repeated EquipmentInfo ItemInfos = 3;
+}
+
+message C2L_UpdateAchieveLeader // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 MedalLeaderId = 1;
+}
+
+message L2C_UpdateAchieveLeader // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 MedalLeaderId = 1;
+}
+
+message C2L_GetReward // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 TaskId = 1;
+}
+
+message L2C_GetReward // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	repeated EquipmentInfo ItemList = 2;
+}
+
+message C2L_GetTaskList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetTaskList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 MedalLeaderId = 1;
+	repeated TaskSimpleInfo TaskList = 2;
+}
+
+message C2L_GetAllTopLevelAchieve // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetAllTopLevelAchieve // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 TaskIds = 1;
+}
+
+message G2C_OnTaskReseted // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	repeated int64 TaskIdList = 2;
+	repeated EquipmentInfo EquipList = 3;
+}
+
+message G2C_OnTaskChanged // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated TaskSimpleInfo TaskList = 1;
+}
+
+message G2C_OnTaskTeamChanged // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated TaskTeamSimpleInfo TaskList = 1;
+}
+
+message G2C_OnTaskClosed // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated int64 TaskIds = 1;
+}
+
+message M2L_OnTaskRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	repeated string Keys = 2;
+}
+
+message L2M_OnTaskRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Master2L_OnTaskRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	repeated string Keys = 2;
+}
+
+message L2Master_OnTaskRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Master2L_OnTaskReseted // IRequest
+{
+	int32 RpcId = 90;
+	int32 TaskType = 1;
+	int64 ScheduleId = 2;
+}
+
+message L2Master_OnTaskReseted // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*---------------場景---------------*/
+message C2L_UnLockScene // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 SceneId = 1;
+}
+
+message L2C_UnLockScene // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_GetUserAllScene // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetUserAllScene // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 SceneList = 1;
+}
+
+message L2C_OnSceneCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	int64 SceneId = 2;
+}
+
+message L2C_OnSceneSweeped // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	int64 Coin = 2;
+	repeated EquipmentInfo EquipList = 3;
+}
+
+/*---------------場景---------------*/
+message C2L_UnLockSticker // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 StickerId = 1;
+}
+
+message L2C_UnLockSticker // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_GetUserAllSticker // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetUserAllSticker // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 SceneList = 1;
+}
+
+message L2C_OnStickerCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	int64 StickerId = 2;
+}
+
+/*---------------角色---------------*/
+message C2L_UnlockCharacter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 CharacterId = 1;
+}
+
+message L2C_UnlockCharacter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	PlayerCharSetting CharSetting = 2;
+}
+
+message C2L_GetUserAllCharacter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetUserAllCharacter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 LeaderId = 1;
+	repeated PlayerCharSetting CharacterList = 2;
+	repeated int64 OwnCharaIdList = 3;
+}
+
+message L2C_OnCharacterCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	PlayerCharSetting CharaSetting = 2;
+}
+message C2L_GetPlayerCharacter // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetPlayerCharacter // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerCharSetting Character = 1;
+}
+message C2L_GetPlayerPet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetPlayerPet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerPetSetting PetList = 1;
+}
+/*---------------寵物---------------*/
+message PlayerPetBaseInfo
+{
+	int64 PetVisitTownId = 1;
+	int64 ExplorePetId = 2;
+	int32 FeedFreeTime = 3;
+	int32 ExploreFreeTime = 4;
+	int32 SensibilityFreeTime = 5;
+	int32 PrankFreeTime = 6;
+}
+
+message JPetLogInfo
+{
+	int32 LogType = 1;
+	int64 PetId = 2;
+	int64 OwnerUid = 3;
+	int64 SenderUid = 4;
+	int64 ReceiverUid = 5;
+	int64 CreateAt = 6;
+}
+
+message JPetTownLogInfo
+{
+	int32 LogType = 1;
+	int64 OwnerUid = 2;
+	int64 SenderUid = 3;
+	int64 ReceiverUid = 4;
+	int64 CreateAt = 5;
+}
+
+message PetSatietyInfo
+{
+	int64 PetId = 1;
+	int32 Satiety = 2;
+}
+
+message PetItemInfo
+{
+	int64 ConfigId = 1;
+	int32 Count = 2;
+	int32 ItemType = 3;
+}
+
+message PetTownInfo
+{
+	int64 TownConfigId = 1;
+	int32 TownEvaluationCount = 2;
+	bool IsEvaluation = 3;
+	repeated PlayerPetSetting PetSettings = 4;
+	repeated PetFixTownFacilityInfo FixTownFacilityInfos = 5;
+	repeated PetTownDecorationInfo TownDecorationInfos = 6;
+}
+
+message PetFixTownFacilityInfo
+{
+	int64 Id = 1;
+	int64 FixFacilityId = 2;
+	int32 FixFacilityType = 3;
+	PetTownTransformInfo TransformInfo = 4;
+}
+
+message PetTownDecorationInfo
+{
+	int64 Id = 1;
+	int64 DecorationId = 2;
+	PetTownTransformInfo TransformInfo = 3;
+}
+
+message PetTownTransformInfo
+{
+	float VerticalPos = 1;
+	float HorizontalPos = 2;
+	float EulerAngleY = 3;
+}
+
+message PetFarmInfo
+{
+	int64 PetFarmConfigId = 1;
+	repeated PetFarmLandInfo FarmLandInfos = 2;
+}
+
+message PetFarmLandInfo
+{
+	int64 PetFarmLandId = 1;
+	PetFarmCropInfo FarmCropInfo = 2;
+}
+
+message PetFarmCropInfo
+{
+	int64 CropId = 1;
+	int64 ConfigId = 2;
+	int64 CropStageStartTime = 3;
+	int64 CropStageWaterStartTime = 4;
+	int32 CropStageWaterCurCount = 5;
+	int32 CropStageType = 6;
+	int32 CropType = 7;
+}
+
+message PetRoomInfo
+{
+	int64 Uid = 1;
+	int64 ConfigId = 2;
+}
+
+message PetExploreGameAIMemberData
+{
+	int64 Uid = 1;
+	int32 MapUnitType = 2;
+	string Name = 3;
+	PlayerCharSetting CharSetting = 4;
+	PlayerPetSetting PetSetting = 5;
+}
+
+message LadderLotteryData
+{
+	int64 RewardId = 1;
+	int64 PunishId = 2;
+}
+
+message C2L_EvolveOnePet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+}
+
+message L2C_EvolveOnePet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int64 ExplorePetId = 2;
+	repeated PlayerCharSetting CharaSettings = 3;
+	repeated PlayerPetSetting PetSettings = 4;
+}
+
+message C2L_DevolveOnePet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+}
+
+message L2C_DevolveOnePet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int64 ExplorePetId = 2;
+	repeated PlayerCharSetting CharaSettings = 3;
+	repeated PlayerPetSetting PetSettings = 4;
+}
+
+message C2L_UseFoodUpdatePetNumerical // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetId = 2;
+	int64 PetFeedId = 3;
+	int32 Count = 4;
+}
+
+message L2C_UseFoodUpdatePetNumerical // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int32 Intimate = 2;
+	int32 Satiety = 3;
+	int32 ExploreExp = 4;
+	int32 Count = 5;
+	int32 FeedTimes = 6;
+}
+
+message C2L_UseTouchUpdatePetIntimate // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetId = 2;
+}
+
+message L2C_UseTouchUpdatePetIntimate // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Intimate = 1;
+	int32 TouchTimes = 2;
+}
+
+message C2L_UsePrankUpdatePetNumerical // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetId = 2;
+}
+
+message L2C_UsePrankUpdatePetNumerical // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int32 Intimate = 2;
+	int32 PrankTimes = 3;
+}
+
+message C2L_UseMakeUpTicketUpdatePetFurColor // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+	int64 PetFurItemId = 2;
+}
+
+message L2C_UseMakeUpTicketUpdatePetFurColor // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	PlayerPetSetting PetSetting = 2;
+}
+
+message C2L_UpdatePetNickName // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+	string NickName = 2;
+}
+
+message L2C_UpdatePetNickName // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UnlockPet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+}
+
+message L2C_UnlockPet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+}
+
+message C2L_UnlockPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 SceneId = 1;
+}
+
+message L2C_UnlockPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_GetOwnedPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetOwnedPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 TownIdList = 1;
+	int64 SetTownScene = 2;
+}
+
+message C2L_GetUserAllPet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetUserAllPet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerPetSetting PetList = 1;
+}
+
+message C2L_GetPetItems // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetPetItems // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetItemInfo Infos = 1;
+}
+
+message C2L_GetPetLogs // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+	int64 Uid = 2;
+	int32 Page = 3;
+}
+
+message L2C_GetPetLogs // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxLogCount = 1;
+	repeated JPetLogInfo Infos = 2;
+}
+
+message C2L_MoveToPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_MoveToPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PetTownInfo Info = 1;
+}
+
+message C2L_LeaveToPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_LeaveToPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_GetPetTownLogs // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetPetTownLogs // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxLogCount = 1;
+	repeated JPetTownLogInfo Infos = 2;
+}
+
+message C2L_UpdateVisitPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetTownId = 1;
+}
+
+message L2C_UpdateVisitPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_EditorPetsOnPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 PetIds = 1;
+}
+
+message L2C_EditorPetsOnPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerPetSetting PetSettings = 1;
+}
+
+message C2L_PetTownSendEvaluation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 TownOwnerUid = 1;
+}
+
+message L2C_PetTownSendEvaluation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 EvaluationCount =1;
+	bool IsEvaluation = 2;
+}
+
+message C2L_RecyclePetsInBag // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 PetIds = 1;
+}
+
+message L2C_RecyclePetsInBag // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerPetSetting PetSettings = 1;
+}
+
+message C2L_EditorDecorationsOnPetTown // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated PetTownDecorationInfo TownDecorationInfos = 1;
+}
+
+message L2C_EditorDecorationsOnPetTown // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetTownDecorationInfo TownDecorationInfos = 1;
+}
+
+message C2L_RecycleDecorationsInBag // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 DecorationIds = 1;
+}
+
+message L2C_RecycleDecorationsInBag // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UpdateFixFacilitiesStyle // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated PetFixTownFacilityInfo FixTownFacilityInfos = 1;
+}
+
+message L2C_UpdateFixFacilitiesStyle // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetFixTownFacilityInfo FixTownFacilityInfos = 1;
+}
+
+message C2L_BuyPetItem // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ItemId = 1;
+	int32 Count = 2;
+}
+
+message L2C_BuyPetItem // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int32 Count = 2;
+}
+
+message C2L_SellPetItem // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ItemId = 1;
+	int32 Count = 2;
+}
+
+message L2C_SellPetItem // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	int32 Count = 2;
+}
+
+message C2L_MoveToPetFarm // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_MoveToPetFarm // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PetFarmInfo Info = 1;
+}
+
+message C2L_LeaveToPetFarm // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_LeaveToPetFarm // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_PlantTheSeed // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetFarmLandId = 2;
+	int64 SeedItemId = 3; // PetFarmCropSetting
+}
+
+message L2C_PlantTheSeed // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PetFarmCropInfo Info = 1;
+}
+
+message C2L_WaterPetLand // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetFarmLandId = 2;
+}
+
+message L2C_WaterPetLand // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PetFarmCropInfo Info = 1;
+}
+
+message C2L_HarvestPetCrop // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int64 PetFarmLandId = 2;
+}
+
+message L2C_HarvestPetCrop // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PetItemInfo Info = 1;
+}
+
+message C2L_GetPetExploreMaps // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetPetExploreMaps // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 ExploreFreeTime = 1;
+	int32 ExploreTicketCount = 2;
+	PlayerPetSetting PetSetting = 3;
+	repeated int64 ExploreIds = 4;
+}
+
+message C2L_UpdateExplorePet // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PetId = 1;
+}
+
+message L2C_UpdateExplorePet // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_MoveToPetExploreMap // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreId = 1;
+}
+
+message L2C_MoveToPetExploreMap // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	int32 ExploreFreeTime = 2;
+	int32 ExploreTicketCount = 3;
+	int64 ExploreEpisodeId = 4;
+	PlayerPetSetting PetSetting = 5;
+}
+
+message C2M_LeaveToPetExploreMap // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RoomId = 1;
+}
+
+message M2C_LeaveToPetExploreMap // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PetItemInfo PetItemInfos = 1;
+	int64 Coin = 2;
+	PlayerPetSetting PetSetting = 3;
+}
+
+message C2M_MoveToNextPetExploreEpisode // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 DoorId = 1;
+}
+
+message M2C_MoveToNextPetExploreEpisode // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ExploreEpisodeId = 1;
+	PlayerPetSetting PetSetting = 2;
+}
+
+message C2M_ReplyPetExploreQuizAnimation // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreQuizEpisode // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 Answer = 2;
+}
+
+message M2C_ReplyPetExploreQuizEpisode // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	repeated PetItemInfo Infos = 4;
+	int32 PlayerWinType = 5;
+	int64 RewardId = 6;
+	int64 PunishId = 7;
+}
+
+message C2M_ReplyPetExploreDialogEpisode // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message M2C_ReplyPetExploreDialogEpisode // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	repeated PetItemInfo Infos = 4;
+	int64 RewardId = 5;
+	int64 PunishId = 6;
+}
+
+message C2M_ReplyPetExploreTurnBaseAnimation // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreGamebleAnimation // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreRockAndPaperAndScissorsStart // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 PlayExType = 2;
+}
+
+
+message C2M_ReplyPetExploreRockAndPaperAndScissors // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 PlayerOutPunch = 2;
+}
+
+message C2M_ReplyPetExploreRoulette // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreDiceBetSize // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreScratch // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreSlot // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+
+message C2M_ReplyPetExplorePassWord // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 PlayerPassWord = 2;
+}
+
+message C2M_ReplyPetExploreDetonateBomb // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 PlayerCountDown = 2;
+}
+
+message C2M_ReplyPetExplorePassBomb // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 HitCount = 2;
+}
+
+message C2M_ReplyPetExploreTugOfWar // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	double RopePosition = 2;
+}
+
+message C2M_ReplyPetExploreCardCompare // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 PointCompareType = 2;
+}
+
+message C2M_ReplyPetExploreStartGuessBallInCup // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreFindBallInCup // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	bool IsAnswerCup = 2;
+}
+
+message C2M_ReplyPetExploreFortuneStick // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+}
+
+message C2M_ReplyPetExploreLadderLottery // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ExploreEpisodeId = 1;
+	int32 Order = 2;
+}
+
+message L2M_PetExploreRoomCreate // IRequest
+{
+	int32 RpcId = 90;
+	PetRoomInfo RoomInfo = 1;
+}
+
+message M2L_PetExploreRoomCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Json = 1;
+	int64 DoorId = 2;
+}
+
+message L2M_PetExploreMapUnitCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	int64 GateSessionId = 2;
+	MapUnitInfo MapUnitInfo = 3;
+	int64 PetId = 4;
+	int64 DoorId = 5;
+}
+
+message M2L_PetExploreMapUnitCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 MapUnitId  = 1;
+	PlayerPetSetting PetInfo = 2;
+	int64 ExploreEpisodeId = 3;
+}
+
+message G2C_OnJPetLogCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	JPetLogInfo Info = 1;
+}
+
+message G2C_OnJPetTownLogCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	JPetTownLogInfo Info = 1;
+}
+
+message L2C_OnPetTouchReseted // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message L2C_OnPetSatietyReduced // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated PetSatietyInfo Infos = 1;
+}
+
+message L2C_OnUserPetFreeTimeReseted // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 ExploreTime = 1;
+	int32 FeedTime = 2;
+	int32 PrankTime = 3;
+	int32 SensibilityTime = 4;
+}
+
+message L2C_OnPetCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	PlayerPetSetting PetSetting = 2;
+}
+
+message L2C_OnPetItemCreated // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	PetItemInfo Info = 1;
+}
+
+message L2C_OnPetFarmLandRefreshed // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	PetFarmLandInfo Info = 2;
+}
+
+message L2C_OnPetFarmLandHarvested // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	int64 FarmLandId = 2;
+}
+
+message M2C_OnPetSettingRefreshed // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	PlayerPetSetting PetSetting = 1;
+}
+
+message M2C_PetExploreTurnBasedGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 NextRoundStartTime = 1;
+	int32 Round = 2;
+}
+
+message M2C_PetExploreBossGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 RewardId = 1;
+	repeated int64 RewardIdTotalList = 2;
+}
+
+
+message M2C_PetExploreRockAndPaperAndScissorsStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 NowRound = 1;
+	int32 MaxRound = 2;
+	int32 BossPowerType = 3; 
+	int32 TargetScore = 4;
+}
+
+message M2C_PetExploreRockAndPaperAndScissorsUpdate // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 BossOutPunch = 1;
+	int32 BossScore =2;
+	int32 PlayerScore = 3;
+	int32 NowRound = 4;
+	int32 RoundResult = 5;
+}
+
+message M2C_PetExploreQuizTimeOut // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+}
+
+message M2C_PetExploreGamebleRouletteGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 EndTime = 1;
+	repeated int64 RewardIds = 2;
+	repeated int64 PunishIds = 3;
+	int64 SpinTime = 4;
+}
+
+message M2C_PetExploreGamebleRouletteGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId = 5;
+}
+
+message M2C_PetExploreGamebleScratchGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 EndTime = 1;
+	int64 RewardId = 2;
+	int64 PunishId= 3;
+}
+
+message M2C_PetExploreGamebleScratchGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId= 5;
+}
+
+message M2C_PetExploreGamebleSlotGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 EndTime = 1;
+	repeated int32 SlotObjList = 2;
+	int64 RewardId = 3;	
+	int64 SpinTime = 4;
+	repeated int64 RewardIdList = 5;
+}
+
+message M2C_PetExploreGamebleSlotGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+}
+
+message M2C_PetExploreGamebleDiceBetSizeGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 EndTime = 1;
+	int32 PlayerDiceNumber = 2;
+	int32 NpcDiceNumber = 3;
+}
+
+message M2C_PetExploreGamebleDiceBetSizeGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId = 5;
+}
+
+
+message M2C_ReplyPetExplorePassWord // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	repeated int32 PlayerAnwserRange = 1;
+	repeated int32 BossAnwserRange = 2;
+	int32 BossPassWord = 3;
+	int32 BingoPlayerType = 4;
+}
+
+
+message M2C_PetExploreDetonateBombGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 BombNowState =1;
+}
+
+message M2C_PetExploreDetonateBombGameUpdate // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 BombState = 1;
+	int32 BossHit = 2;
+}
+
+
+message M2C_PetExploreCardCompareGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 PlayerCardPoint = 1;
+	int32 PlayerCardType = 2;
+	int32 NpcCardPoint = 3;
+	int32 NpcCardType = 4;
+}
+
+message M2C_PetExploreCardCompareGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId = 5;
+}
+
+message M2C_PetExploreFindBallInCupGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 NextRoundStartTime = 1;
+	int32 RoundTime = 2;
+	int32 ExchangeCount = 3;
+	int64 RewardId = 4;
+	double ExchangeTime = 5;
+}
+
+message M2C_PetExploreStartGuessBallInCup // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+}
+
+message M2C_PetExploreFindBallInCupGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId = 5;
+}
+
+message M2C_PetExploreFortuneStickGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 EndTime = 1;
+	int64 DisplayId = 2;
+}
+
+message M2C_PetExploreFortuneStickGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId= 5;
+}
+
+message M2C_PetExploreLadderLotteryGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 NextRoundStartTime = 1;
+	int32 Round = 2;
+	repeated LadderLotteryData DataList = 3;
+}
+
+message M2C_PetExploreLadderLotteryGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	repeated int64 DoorIds = 3;
+	int64 RewardId = 4;
+	int64 PunishId = 5;
+}
+
+message M2C_PetExplorePassBombGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 NextRoundStartTime = 1;
+	int32 Round = 2;
+	int32 HitOrder = 3;
+	int32 PlayerGuaranteedHitCount = 4;
+	int32 BossGuaranteedHitCount = 5;
+	repeated int32 BombPhaseHPList = 6;
+	repeated int32 BossHitList = 7;
+}
+
+message M2C_PetExplorePassBombGameUpdate // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 HitOrder = 1;
+	int32 HitCount = 2;
+	int32 BombHP = 3;
+}
+
+message M2C_PetExplorePassBombGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	int64 RewardId = 3;
+	int64 PunishId = 4;
+	repeated int64 RewardIdTotalList = 5;
+	repeated int64 PunishIdTotalList = 6;
+}
+
+message M2C_PetExploreTugOfWarGameStart // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 NextRoundStartTime = 1;
+	int32 Round = 2;
+	int32 GameTime = 3;
+	double RopeHalfLength = 4;
+	double RopeMoveSpeed = 5;
+	double GyroscopeGravityRange = 6;
+	double PowerCursorAcceleration = 7;
+	double PowerTargetMoveTime = 8;
+	double PowerTargetMoveCoolDownTime = 9;
+	double PowerTargetMoveDistance_Minimum = 10;
+}
+
+message M2C_PetExploreTugOfWarGameEnd // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 Coin = 1;
+	PlayerPetSetting PetSetting = 2;
+	int64 RewardId = 3;
+	int64 PunishId = 4;
+	repeated int64 RewardIdTotalList = 5;
+	repeated int64 PunishIdTotalList = 6;
+}
+
+/*---------------獎勵---------------*/
+message L2C_OnRewardReceived // IActorMessage
+{
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int64 FromUid = 1;
+	int64 Coin = 2;
+	repeated EquipmentInfo EquipList = 3;
+}
+
+/*------------紀錄編輯-------------*/
+message C2M_ChangeBattleRecordNote // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 Uid = 1;
+	int64 RecordId = 2;
+	string Note = 3;
+}
+
+message M2C_ChangeBattleRecordNote // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	string Note = 1;
+}
+
+message C2L_ChangeLobbyRecordNote // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RecordId = 1;
+	string Note = 2;
+	int32 SportType = 3;
+}
+
+message L2C_ChangeLobbyRecordNote // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	string Note = 1;
+}
+
+message C2L_TagRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 RecordId = 1;
+	int32 Tag = 2;
+}
+
+message L2C_TagRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ActorId = 93;
+	int32 Tag = 1;
+}
+
+/*-------------------JCommunity-------------------*/
+
+/*---------------HomePage---------------*/
+
+message Channelinfo
+{
+	int64 ChannelId = 1;
+	int64 TotalCommentCount = 2;
+
+}
+message Clubinfo
+{
+	int64 ClubId = 1;
+	string ClubName = 2;
+	int32 Invitation = 3;
+}
+message CommunityPlayerJoinInfo
+{
+	int64 Uid = 1;
+	int64 MoodId = 2;
+	repeated Clubinfo Clubs = 3;
+	repeated Channelinfo Channels = 4;
+}
+
+message CommunityHomePagePlayerBaseInfo
+{
+	int32 Birthday = 1;
+	int32 Location = 2;
+	int32 Sex = 3;
+	float Height = 4;
+	float Weight = 5;
+	string Hobby = 6;
+	string SelfIntroduction = 7;
+}
+
+message CommunityHomePagePlayerSportRecord
+{
+	RideTotalInfo PlayerRideTotalInfo = 1;
+	RunTotalInfo PlayerRunTotalInfo = 2;
+	int64 CreateAt = 3;
+	BoxingTotalInfo PlayerBoxingTotalInfo = 4;
+}
+
+message CommunityHomePagePlayerIdentityCard
+{
+	int64 Uid = 1;
+	int32 Location = 2;
+	string Name = 3;
+	string PortraitImageName = 4;
+	PlayerFurnitureSetting FurnitureData = 5;
+}
+
+message C2L_GetCommunityHomePagePlayerIdentityCard // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetCommunityHomePagePlayerIdentityCard // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityHomePagePlayerIdentityCard Data = 1;
+
+}
+
+message C2L_GetCommunityHomePagePlayerBaseInfo // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetCommunityHomePagePlayerBaseInfo // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityHomePagePlayerBaseInfo Data = 1;
+}
+
+message C2L_GetCommunityHomePagePlayerSportRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetCommunityHomePagePlayerSportRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityHomePagePlayerSportRecord Data = 1;
+}
+
+message C2L_GetCommunityHomePageVisibility // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+
+message L2C_GetCommunityHomePageVisibility // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 PlayerHomePageInfoVisibility = 1;
+}
+
+message C2L_ChangeCommunityHomePageVisibility // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 PlayerHomePageInfoVisibility = 1;
+}
+
+message L2C_ChangeCommunityHomePageVisibility // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ChangeFurnitureSetting // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	PlayerFurnitureSetting playerFurnitureSetting = 1;
+}
+
+message L2C_ChangeFurnitureSetting // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerFurnitureSetting playerFurnitureSetting = 1;
+}
+message C2L_UnlockFurnitureSetting // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ItemId = 1;
+}
+
+message L2C_UnlockFurnitureSetting // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 coin = 1;
+}
+/*---------------HomePage-END---------------*/
+
+/*---------------JMood----------------------*/
+
+message CommunityMoodInfo
+{
+	int64 Uid = 1;
+	string Post = 2;
+	string PostStickerImageName = 3;
+	int32 PostSensibility = 4;
+	int32 PostSensibilityCount = 5;
+	int32 MaxCommentCount = 6;
+}
+
+message CommunityMoodCommentInfo
+{
+	int64 Id = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	string Comment = 4;
+	int64 StickerId = 5;
+	string PortraitImageName = 6;
+	int32 CommentSensibility = 7;
+	int32 CommentSensibilityCount = 8;
+	int64 PostId = 9;
+}
+
+message C2L_GetCommunityMoodPost // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+}
+
+message L2C_GetCommunityMoodPost // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityMoodInfo Data = 1;
+}
+
+message C2L_GetFriendCommunityMoodPost // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetFriendCommunityMoodPost // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxFriendCount = 1;
+	repeated CommunityMoodInfo Datas = 2;
+}
+
+message C2L_GetCommunityMoodPostComment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetCommunityMoodPostComment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxCommentCount = 1;
+	repeated CommunityMoodCommentInfo Datas = 2;
+}
+
+message C2L_ChangeCommunityMoodPost // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Post = 1;
+}
+
+message L2C_ChangeCommunityMoodPost // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityMoodInfo Data = 1;
+}
+
+message C2L_CreateCommunityMoodPost // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Post = 1;
+}
+
+message L2C_CreateCommunityMoodPost // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityMoodInfo Data = 1;
+}
+
+message C2L_CreateCommunityMoodPostComment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	string Comment = 2;
+	int64 StickerId = 3;
+}
+
+message L2C_CreateCommunityMoodPostComment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityMoodCommentInfo CommentInfo = 1;
+}
+
+message C2L_DeleteCommunityMoodPost // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+}
+
+message L2C_DeleteCommunityMoodPost // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_DeleteCommunityMoodPostComment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int64 CommentId = 2;
+}
+
+message L2C_DeleteCommunityMoodPostComment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ChangeCommunityMoodPostSensibility // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int32 Sensibility = 2;
+}
+
+message L2C_ChangeCommunityMoodPostSensibility // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Sensibility = 1;
+}
+
+message C2L_ChangeCommunityMoodCommentSensibility // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int64 CommentId = 2;
+	int32 Sensibility = 3;
+}
+
+message L2C_ChangeCommunityMoodCommentSensibility // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Sensibility = 1;
+}
+
+message C2L_GetCommunityMoodSmallRoom // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 TargetUid = 1;
+}
+
+message L2C_GetCommunityMoodSmallRoom // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Invitation = 1;
+	int32 Relationship = 2;
+	repeated CommunityPlayerJoinInfo Datas = 3;
+}
+
+message C2L_ChangeCommunityMoodInvitation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 TargetUid = 1;
+	int32 Invitation = 2;
+	int64 ClubId = 3;
+}
+
+message L2C_ChangeCommunityMoodInvitation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Invitation = 1;
+}
+
+message L2C_OnMoodPostCreated // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	CommunityMoodInfo Data = 1;
+}
+
+message L2C_OnMoodPostCommentCreated // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	CommunityMoodCommentInfo Data = 1;
+}
+
+message L2C_OnMoodPostDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+}
+
+message L2C_OnMoodPostCommentDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int64 CommentId = 2;
+}
+
+message L2C_OnMoodPostSensibilityChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PostId = 1;
+	int32 SensibilityCount = 3;
+}
+
+message L2C_OnMoodPostCommentSensibilityChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 CommentId = 1;
+	int32 SensibilityCount = 2;
+}
+
+/*---------------JMood-END------------------*/
+
+/*---------------JClub----------------------*/
+message CommunityClubInfo
+{
+	int64 ClubId = 1;
+	int64 LeaderUid = 2;
+	int32 ClubType = 3;
+	string ClubPortraitImageName = 4;
+	string ClubName = 5;
+	string Introduction = 6;
+	string LeaderName = 7;
+	int32 Location = 8;
+	int32 MemberCount = 9;
+	int32 MaxMemberCount = 10;
+	int64 RideTotalMileage = 11;
+	int64 RunTotalMileage = 12;
+	int32 RideTotalActivityCount = 13;
+	int32 RunTotalActivityCount = 14;
+	double TotalCalories = 15;
+	int64 createAt = 16;
+	
+}
+
+message CommunityClubMemberInfo
+{
+	int64 MemberUid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	int64 JoinAt = 5;
+}
+
+message ClubCommentContent
+{
+	int64 EmojiId = 1;
+	string StickerFileName = 2;
+	string Comment = 3;
+}
+
+message ClubCommentRawContent
+{
+	int64 EmojiId = 1;
+	int64 ImageGalleryId = 2;
+	string Comment = 3;
+}
+
+message CommunityClubMemberCommentInfo
+{
+	int64 CommentId = 1;
+	int64 CreateAt = 2;
+	int64 Uid = 3;
+	string Name = 4;
+	string PortraitImageName = 5;
+	ClubCommentContent Content = 6;
+}
+
+message CommunityClubAnnouncementInfo
+{
+	int64 ClubId = 1;
+	string Announcement = 2;
+}
+
+message CommunityClubAnnouncementStateInfo
+{
+	int64 Uid = 1;
+	string Name = 2;
+	int32 Type = 3;
+	int64 CreateAt = 4;
+}
+
+message CommunityClubMemberStackDayInfo
+{
+	int64 MemberUid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	int32 StackDay = 5;
+}
+
+message CommunityClubMemberMileageInfo
+{
+	int64 MemberUid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	int64 Mileage = 5;
+}
+
+message CommunityClubMemberActivityCountInfo
+{
+	int64 MemberUid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	int32 ActivityCount = 5;
+}
+
+message CommunityClubMemberWinRateCountInfo
+{
+	int64 MemberUid = 1;
+	string Name = 2;
+	string PortraitImageName = 3;
+	int32 Location = 4;
+	double WinRate = 5;
+}
+
+message C2L_GetCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int32 InviteType = 1;
+	repeated CommunityClubInfo Data = 2;
+}
+
+message C2L_CreateCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ConfigId = 1;
+	string ClubName = 2;
+	string Introduction = 3;
+}
+
+message L2C_CreateCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubInfo Data = 1;
+}
+
+message C2L_UpdateCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 ConfigId = 2;
+	string ClubName = 3;
+	string Introduction = 4;
+}
+
+message L2C_UpdateCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubInfo Data = 1;
+}
+
+message C2L_DisbandCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_DisbandCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_QueryCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string ClubName = 1;
+	int32 ClubType = 2;
+	int32 HotType = 3;
+	int32 Page = 4;
+}
+
+message L2C_QueryCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxClubCount = 1;
+	repeated CommunityClubInfo Datas = 2;
+}
+
+message C2L_JoinCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_JoinCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_LeaveCommunityClub // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_LeaveCommunityClub // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_GetCommunityClubMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetCommunityClubMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxMemberCount = 1;
+	repeated CommunityClubMemberInfo Datas = 2;
+}
+
+message C2L_GetMyAllCommunityClubMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 UId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetMyAllCommunityClubMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated RelationshipSimpleInfo Datas = 1;
+}
+
+message C2L_GetCommunityClubMemberCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 StartAt = 2;
+	int64 EndAt = 3;
+	int32 Skip = 4;
+	int32 Limit = 5;
+}
+
+message L2C_GetCommunityClubMemberCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxCommentCount = 1;
+	repeated CommunityClubMemberCommentInfo Datas = 2;
+}
+
+message C2L_CreateCommunityClubMemberCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	ClubCommentRawContent Content = 2;
+}
+
+message L2C_CreateCommunityClubMemberCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 CommentId = 1;
+	int64 CreateAt = 2;
+}
+
+message C2L_DeleteCommunityClubMemberCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 CommentId = 2;
+}
+
+message L2C_DeleteCommunityClubMemberCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2L_GetDeletedCommunityClubCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_GetDeletedCommunityClubCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 CommentIds = 1;
+}
+message C2L_GetCommunityClubInvitationApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetCommunityClubInvitationApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxInvitationCount = 1;
+	repeated CommunityClubMemberInfo Datas = 2;
+}
+
+message C2L_InviteUserAsCommunityClubMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 TargetUid = 2;
+}
+
+message L2C_InviteUserAsCommunityClubMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_InviteUsersAsCommunityClubMembers // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	repeated int64 Uids = 2;
+}
+
+message L2C_InviteUsersAsCommunityClubMembers // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_AcceptCommunityClubInvitationApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 TargetUid = 2;
+}
+
+message L2C_AcceptCommunityClubInvitationApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubMemberInfo Data = 1;
+}
+
+message C2L_RefuseCommunityClubInvitationApply // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 TargetUid = 2;
+}
+
+message L2C_RefuseCommunityClubInvitationApply // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_KickCommunityClubMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 TargetUid = 2;
+}
+
+message L2C_KickCommunityClubMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_AppointCommunityClubNewLeader // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 TargetUid = 2;
+}
+
+message L2C_AppointCommunityClubNewLeader // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_QueryCommunityClubRelationshipByName // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Name = 1;
+	int32 Page = 2;
+}
+
+message L2C_QueryCommunityClubRelationshipByName // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated CommunityClubMemberInfo Datas = 1;
+	int64 Count = 2;
+}
+
+message C2L_GetCommunityClubMemberStackDayLeaderboard // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 SportType = 2;
+	int32 Page = 3;
+}
+
+message L2C_GetCommunityClubMemberStackDayLeaderboard // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxMemberCount = 1;
+	repeated CommunityClubMemberStackDayInfo Datas = 2;
+}
+
+message C2L_GetCommunityClubMemberMileageLeaderboard // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 SportType = 2;
+	int32 Page = 3;
+}
+
+message L2C_GetCommunityClubMemberMileageLeaderboard // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxMemberCount = 1;
+	repeated CommunityClubMemberMileageInfo Datas = 2;
+}
+
+message C2L_GetCommunityClubMemberActivityCountLeaderboard // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 SportType = 2;
+	int32 Page = 3;
+}
+
+message L2C_GetCommunityClubMemberActivityCountLeaderboard // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxMemberCount = 1;
+	repeated CommunityClubMemberActivityCountInfo Datas = 2;
+}
+
+message C2L_GetCommunityClubMemberBoxingWinRateLeaderboard // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 BattleType = 2;
+	int32 Page = 3;
+}
+
+message L2C_GetCommunityClubMemberBoxingWinRateLeaderboard // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxMemberCount = 1;
+	repeated CommunityClubMemberWinRateCountInfo Datas = 2;
+}
+
+message C2L_GetCommunityClubAnnouncement // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_GetCommunityClubAnnouncement // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubAnnouncementInfo Data = 1;
+}
+
+message C2L_GetCommunityClubAnnouncementStateRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetCommunityClubAnnouncementStateRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 MaxAnnouncementCount = 1;
+	repeated CommunityClubAnnouncementStateInfo Datas = 2;
+}
+
+message C2L_ChangeCommunityClubAnnouncement // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	string Announcement = 2;
+}
+
+message L2C_ChangeCommunityClubAnnouncement // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubAnnouncementInfo Data = 1;
+}
+
+message L2C_OnClubCommentCreated // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	CommunityClubMemberCommentInfo Data = 1;
+	int64 ClubId = 2;
+}
+
+message L2C_OnClubCommentDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 CommentId = 2;
+	int64 CreateAt = 3;
+}
+
+message L2C_OnClubDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_OnClubMemberCreated // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	CommunityClubMemberInfo Data = 2;
+	CommunityClubAnnouncementStateInfo Announcement = 3;
+}
+
+message L2C_OnClubMemberDeleted // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 MemberUid = 2;
+	CommunityClubAnnouncementStateInfo Announcement = 3;
+}
+
+message L2C_OnClubLeaderChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 LeaderUid = 2;
+	int32 Location = 3;
+	string Name = 4;
+	CommunityClubAnnouncementStateInfo Announcement = 5;
+}
+
+message L2C_OnClubInfoChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	CommunityClubInfo Data = 1;
+}
+
+message L2C_OnClubAnnouncementChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	CommunityClubAnnouncementInfo Announcement = 1;
+}
+message C2L_GetOneClubMemberCommentInformation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int64 Uid = 2;
+}
+
+message L2C_GetOneClubMemberCommentInformation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubMemberInfo CommunityClubMemberInfo = 1;
+}
+message L2C_OnClubOneMemberApply // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ClubId = 1;
+}
+message C2L_GetClubMemberLeader // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_GetClubMemberLeader // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ClubLeader = 1;
+}
+message C2L_GetClubActivityInformation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+	int32 Page = 2;
+}
+
+message L2C_GetClubActivityInformation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated TaskTeamSimpleInfo Infos = 1;
+}
+
+message L2C_OnClubActivityChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EventId = 1;
+	CommunityClubAnnouncementStateInfo Announcement = 2;
+}
+
+message C2L_ExpansionClubMaxMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ClubId = 1;
+}
+
+message L2C_ExpansionClubMaxMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityClubInfo CommunityClubInfo = 1;
+	int64 coin = 2 ;
+}
+
+
+/*---------------JClub-END------------------*/
+
+/*---------------JChannel----------------------*/
+
+message C2L_StealthModeCommentChannelRead // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated int64 CommentIds = 1;
+}
+
+message L2C_StealthModeCommentChannelRead  // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_CreateCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string ChannelName = 1;
+	string Introduction = 2;
+	bool StealthMode = 3;
+}
+
+message L2C_CreateCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ChannelId = 1;
+}
+
+message C2L_UpdateCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	string ChannelName = 2;
+	string Introduction = 3;
+}
+
+message L2C_UpdateCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnUpdateCommunityChannel // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	string ChannelName = 2;
+	string Introduction = 3;
+}
+
+message C2L_DeleteCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+}
+
+message L2C_DeleteCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnDeleteCommunityChannel // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+}
+
+message CommunityChannelInfo
+{
+	Channelinfo Channelinfo = 1;
+	int64 LeaderUid = 2;
+	string LeaderName = 3;
+	string Name = 4;
+	string Introduction = 5;
+	string Portrait = 6;
+	int32 TotalMemberCount = 7;
+	int32 MaxMemberCount = 8;
+	int32 Location = 9;
+	bool StealthMode = 10;
+}
+
+message CommunityChannelMemberInfo
+{
+	int64 MemberUid = 1;
+	string MemberName = 2;
+	string Portrait = 3;
+	int32 Location = 4;
+	int64 JoinAt = 5;
+}
+
+message C2L_GetJoinedCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int32 Skip = 2;
+	int32 Limit = 3;
+}
+
+message L2C_GetJoinedCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 TotalRecordCount = 1;
+	repeated CommunityChannelInfo ChannelInformations = 2;
+}
+
+message C2L_GetCreatedCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+	int32 Skip = 2;
+	int32 Limit = 3;
+}
+
+message L2C_GetCreatedCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 TotalRecordCount = 1;
+	repeated CommunityChannelInfo ChannelInformations = 2;
+}
+
+message C2L_GetChannelMemberInformation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	int32 Skip = 2;
+	int32 Limit = 3;
+}
+
+message L2C_GetChannelMemberInformation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 TotalRecordCount = 1;
+	repeated CommunityChannelMemberInfo ChannelMemberInformations = 2;
+}
+
+message C2L_GetChannelOneMemberInformation // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	int64 Uid = 2;
+}
+
+message L2C_GetChannelOneMemberInformation // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CommunityChannelMemberInfo ChannelMemberInformation = 2;
+}
+
+message C2L_JoinCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+}
+
+message L2C_JoinCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnJoinCommunityChannel // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	int64 MemberUid = 2;
+}
+
+message C2L_FireCommunityChannelMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	int64 MemberUid = 2;
+}
+
+message L2C_FireCommunityChannelMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnFireCommunityChannelMember // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	int64 MemberUid = 2;
+}
+
+message C2L_DissociateCommunityChannel // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+}
+
+message L2C_DissociateCommunityChannel // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnDissociateFromCommunityChannel // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	int64 MemberUid = 2;
+}
+
+message C2L_CreateCommunityChannelComment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	ChannelCommentRawContent Content = 2;
+}
+
+message L2C_CreateCommunityChannelComment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 CommentId = 1;
+	int64 CreateAt = 2;
+}
+
+message L2C_OnCreateCommunityChannelComment // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	ChannelCommentInfo Comment = 2;
+}
+
+message C2L_DeleteCommunityChannelComment // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 CommentId = 1;
+}
+
+message L2C_DeleteCommunityChannelComment // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnDeleteCommunityChannelComment // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	int64 CommentId = 2;
+	int64 CreateAt = 3;
+}
+
+message C2L_GetDeletedCommunityChannelCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+}
+
+message L2C_GetDeletedCommunityChannelCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int64 CommentIds = 1;
+}
+
+message C2L_AppointCommunityChannelNewLeader // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	int64 LeaderUid = 2;
+}
+
+message L2C_AppointCommunityChannelNewLeader // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2C_OnAppointCommunityChannelNewLeader // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ChannelId = 1;
+	int64 LeaderUid = 2;
+}
+
+message C2L_InviteFriendAsCommunityChannelMember // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	repeated int64 FriendUids = 2;
+}
+
+message L2C_InviteFriendAsCommunityChannelMember // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message ChannelCommentContent
+{
+	int64 EmojiId = 1;
+	string StickerFileName = 2;
+	string Comment = 3;
+	int64 CreateAt = 4;
+}
+
+message ChannelCommentRawContent
+{
+	int64 EmojiId = 1;
+	int64 ImageGalleryId = 2;
+	string Comment = 3;
+}
+
+message ChannelCommentInfo
+{
+	int64 CommentId = 1;
+	int64 Uid = 2;
+	string Name = 3;
+	string PortraitFileName = 4;
+	ChannelCommentContent Content = 5;
+}
+
+message C2L_GetChannelCommentRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ChannelId = 1;
+	int32 Skip = 2;
+	int32 Limit = 3;
+	int64 StartAt = 4;
+	int64 EndAt = 5;
+}
+
+message L2C_GetChannelCommentRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 TotalRecordCount = 1;
+	repeated ChannelCommentInfo Records = 2;
+}
+
+/*-------------------JChannel-END-------------------*/
+
+/*-------------------JCommunity-END-------------------*/
+
+/*-------------------Notification-----------------------*/
+
+enum RedPoint
+{
+	MoodComment = 0;
+	MoodPost = 1;
+	ChannelComment = 2;
+	ClubComment = 3;
+	ClubApply = 4;
+}
+
+message NotificationContent
+{
+	int32 NotificationType = 1;
+	int32 NotificationCount = 2;
+	int64 NotificationId = 3;
+}
+
+message C2L_GetNotificationRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetNotificationRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated NotificationContent Records = 1;
+}
+
+message C2L_MarkNotificationWithRead // IActorLocationMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int32 NotificationType = 1;
+	int64 NotificationId = 2;
+}
+
+/*-------------------Notification-END-------------------*/
+
+/*-------------------BoxingPartyRooom---------------------------*/
+message C2L_GetBoxingGetNpcList //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+
+}
+message L2C_GetBoxingGetNpcList //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated BoxingNPCSetting BoxingNPCSettings = 1;
+}
+
+message M2C_MapUnitBoxingUpdate // IActorMessage
+{
+	int64 ActorId = 93;
+	repeated MapUnitInfo MapUnitInfo = 1;
+	
+}
+message M2C_BoxingBossUpdate // IActorMessage
+{
+	int64 ActorId = 93;
+	int32 BoxingType = 1;
+	int64 BossHP = 2;
+	
+}
+/*-------------------BoxingPartyRooom-END--------------------------*/
+/*-------------------Other-----------------------------------------*/
+message C2L_CreatePrivacyPolicyRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string Version = 1;
+}
+message L2C_CreatePrivacyPolicyRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2L_GetPrivacyPolicyRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+message L2C_GetPrivacyPolicyRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Version = 1;
+}
+message C2L_DeletePrivacyPolicyRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Uid = 1;
+}
+message L2C_DeletePrivacyPolicyRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2R_GetSportType //IRequest
+{
+	int32 RpcId = 90;
+	
+}
+message R2C_GetSportType //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 SportId = 1;
+}
+message C2L_DeleteAccount //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	
+}
+message L2C_DeleteAccount //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message C2L_ExchangeReward //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string AwardCode = 1;
+	
+}
+message L2C_ExchangeReward //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+/*-------------------Other-END-------------------------------------*/
+/*-------------------OutDoor--------------------------------------*/
+message C2L_CreateOutDoorRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string BlueToothMAC = 1;
+	int64 Step = 2;
+	float Calories = 3;
+	int64 ExchangeCoin = 4;
+}
+message L2C_CreateOutDoorRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+message L2C_OutDoorRecordUpdate // IActorMessage
+{
+	int64 ActorId = 93;
+	float TotalCalories = 1;
+	int64 TotalStep = 2;
+	int64 TotalExchangeCoin = 3;
+}
+message C2L_GetOutDoorRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+message L2C_GetOutDoorRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	float TotalCalories = 1;
+	int64 TotalStep = 2;
+	int64 TotalExchangeCoin = 3;
+}
+message C2L_GetRideRecordInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 RoomType = 1;
+	int32 Page = 2;
+}
+message L2C_GetRideRecordInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerRideRoadInfo RideRoadInfos = 1;
+	int64 Count = 2;
+}
+message C2L_GetRunRecordInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 RoomType = 1;
+	int32 Page = 2;
+}
+message L2C_GetRunRecordInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerRunRoadInfo RunRoadInfos = 1;
+	int64 Count = 2;
+}
+message C2L_GetBoxingRecordInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 RoomType = 1;
+	int32 Page = 2;
+}
+message L2C_GetBoxingRecordInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerBoxingRoadInfo BoxingRoadInfos = 1;
+	int64 Count = 2;
+}
+message C2L_GetUserTotalInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+message L2C_GetUserTotalInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerRideTotalInfo RideTotalInfo = 1;
+	PlayerRunTotalInfo RunTotalInfo = 2;
+	PlayerBoxingTotalInfo BoxingTotalInfo = 3;
+}
+/*-------------------OutDoor-End----------------------------------*/
+/*-------------------Roaming--------------------------*/
+message RoamingPathInfo
+{
+	int64 MapId = 1;
+	repeated int32 MapRewardIds = 2;
+}
+message G2C_RoamingPathChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated RoamingPathInfo Infos = 1;
+}
+message L2M_RoamingPathChanged // IRequest
+{
+	int32 RpcId = 90;
+	int32 MapRewardId = 1;
+	bool IsEnable = 2;
+}
+
+message M2L_RoamingPathChanged // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+/*-------------------Roaming-END--------------------------*/
+
+/*-------------------AI----------------------------------*/
+message TeamAIData
+{
+	repeated int64 AIIds = 1;
+}
+
+message L2M_AICreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 RoomId = 1;
+}
+
+message M2L_AICreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message L2M_TeamAICreate // IRequest
+{
+	int32 RpcId = 90;
+	RoomInfo Info = 1;
+	TeamRoomData Data = 2;
+	TeamAIData AIData = 3;
+}
+
+message M2L_TeamAICreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	string Json = 2;
+}
+/*-------------------AI-END------------------------------*/
+
+/*-------------------Schedule-------------------------------*/
+message H2Master_ScheduleRefreshed // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message Master2H_ScheduleRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+/*-------------------Schedule-END---------------------------*/
+
+/*-------------------Festival-------------------------------*/
+message G2C_FestivalChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 FestivalId = 1;
+}
+
+message Master2L_OnAutoBroadcastFestivalReleaseRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 FestivalId = 1;
+}
+
+message L2Master_OnAutoBroadcastFestivalReleaseRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message Master2L_OnAutoBroadcastFestivalExpiredRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 FestivalId = 1;
+}
+
+message L2Master_OnAutoBroadcastFestivalExpiredRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message H2L_FestivalRefreshed // IRequest
+{
+	int32 RpcId = 90;
+}
+
+message L2H_FestivalRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2L_FestivalEventScoreRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	int32 Score = 2;
+}
+
+message L2M_FestivalEventScoreRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message M2L_FestivalEventChecked // IRequest
+{
+	int32 RpcId = 90;
+	int64 Uid = 1;
+	int32 Score = 2;
+}
+
+message L2M_FestivalEventChecked // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 EventId = 1;
+}
+/*-------------------Festival-END--------------------------*/
+
+/*-------------------Event-------------------------------*/
+
+message ManagerDailyEventDetailInfo
+{
+	DailyEventInfo Info = 1;
+	repeated DailyRoomInfo RoomInfos = 2; // 每個活動開啟房間資訊
+}
+
+message ManagerPeriodEventDetailInfo
+{
+	PeriodEventInfo Info = 1;
+	repeated PeriodEventScoreInfo ScoreInfos = 2; // 每個玩家積分與已解鎖道具
+}
+
+message ManagerClubEventDetailInfo
+{
+	ClubEventInfo Info = 1;
+	repeated ClubEventTotalScoreInfo ScoreInfos = 2;  // 每個公會總積分與公會名
+}
+
+message DailyEventInfo
+{
+	int64 EventId = 1; // 活動ID
+	int64 CreateTime = 2; // 發布時間
+	int64 StartTime = 3; // 開始比賽時間
+	int64 SignUpStartTime = 4; // 開始報名時間
+	int64 SignUpExpiredTimeAt = 5; // 結束報名時間
+	int32 EventApplyType = 6;
+	int32 EventUserApplyType = 7;
+	int32 EventValidityType = 8;
+	int32 SportType = 9;
+	int32 SportExtraType = 10;
+	int32 TotalSignUpCount = 11; // 總報名人數
+	string EventContext = 12; // 活動企劃表
+	AnnouncementInfo info = 13; // 包含活動標題與內容
+	
+}
+
+message PeriodEventInfo
+{
+	int64 EventId = 1; // 活動ID
+	int64 CreateTime = 2; // 發布時間
+	int64 StartTime = 3; // 開始時間
+	int64 FinishTime = 4; // 結束時間
+	int32 EventValidityType = 5;
+	int32 SportType = 6;
+	int32 SportExtraType = 7;
+	string EventContext = 8; // 活動企劃表
+	string FestivalContext = 9;
+	AnnouncementInfo info = 10; // 包含活動標題與內容
+}
+
+message ClubEventInfo
+{
+	int64 EventId = 1; // 活動ID
+	int64 CreateTime = 2; // 發布時間
+	int32 EventValidityType = 3;
+	string EventContext = 4; // 活動企劃表
+	AnnouncementInfo info = 5; // 包含活動標題與內容
+}
+
+message DailyRoomInfo
+{
+	int64 RoomId = 1;
+	int32 RoomMemberCount = 2; // 房間人數
+	repeated DailyEventLeaderBoardInfo LeaderBoardInfos = 3; // 排名
+}
+
+message DailyEventLeaderBoardInfo
+{
+	int64 Uid = 1; // 玩家UID
+	string Name = 2; // 玩家名
+	int32 Rank = 3;
+}
+
+message PeriodEventScoreInfo
+{
+	int64 Uid = 1; // 玩家UID
+	string Name = 2; // 玩家名
+	int32 Score = 3; // 積分
+	repeated int64 UnlockItemId = 4; // 已解鎖的道具
+}
+
+message ClubEventTotalScoreInfo
+{
+	string ClubName = 1; // 公會名
+	float TotalScore = 2; // 公會總積分
+	repeated ClubEventMemberScoreInfo MemberInfos = 3; // 公會成員積分
+}
+
+message ClubEventMemberScoreInfo
+{
+	int64 Uid = 1;
+	float Score = 2; // 玩家公會積分
+}
+
+message C2L_ManagerUploadEventDailyConfig //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string AnnounceJson = 1;
+	string EventDailyJson = 2;
+	string MapJson = 3;
+	string RewardJson = 4;
+}
+
+message L2C_ManagerUploadEventDailyConfig //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerUploadEventPeriodConfig //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string AnnounceJson = 1;
+	string EventPeriodJson = 2;
+	string FestivalJson = 3;
+	string MissionJson = 4;
+	string RoadRewardJson = 5;
+}
+
+message L2C_ManagerUploadEventPeriodConfig //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerUploadEventClubConfig //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string AnnounceJson = 1;
+	string EventClubJson = 2;
+	string MissionJson = 3;
+}
+
+message L2C_ManagerUploadEventClubConfig //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_ManagerGetSleepDailyEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetSleepDailyEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerDailyEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetSleepPeriodEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetSleepPeriodEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerPeriodEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetSleepClubEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetSleepClubEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerClubEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetOnlineDailyEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetOnlineDailyEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerDailyEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetOnlinePeriodEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetOnlinePeriodEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerPeriodEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetOnlineClubEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetOnlineClubEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerClubEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetExpiredDailyEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetExpiredDailyEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerDailyEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetExpiredPeriodEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetExpiredPeriodEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerPeriodEventDetailInfo Infos = 2;
+}
+
+message C2L_ManagerGetExpiredClubEventInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_ManagerGetExpiredClubEventInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Count = 1;
+	repeated ManagerClubEventDetailInfo Infos = 2;
+}
+
+message C2L_GetEventDailyAnnouncements //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetEventDailyAnnouncements //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated DailyEventInfo Infos = 1;
+	int64 Count = 2;
+}
+
+message C2L_GetEventPeriodAnnouncements //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetEventPeriodAnnouncements //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PeriodEventInfo Infos = 1;
+	int32 Count = 2;
+}
+
+
+message C2L_GetEventClubAnnouncements //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Page = 1;
+}
+
+message L2C_GetEventClubAnnouncements //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated ClubEventInfo Infos = 1;
+	int32 Count = 2;
+}
+
+message C2L_SignUpEvent //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EventId = 1;
+}
+
+message L2C_SignUpEvent //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_GetEventReservationRoomInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 ReservationId = 1;
+}
+
+message L2C_GetEventReservationRoomInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 ReleaseTime = 1;
+	RoomInfo Info = 2;
+	repeated EventReservationMemberData ApplyMembers = 3;
+	repeated EventReservationMemberData InRoomMembers = 4;
+	
+}
+
+message G2C_EventDailyChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated DailyEventInfo Infos = 1;
+}
+
+message G2C_EventPeriodChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated PeriodEventInfo Infos = 1;
+}
+
+message G2C_EventClubChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated ClubEventInfo Infos = 1;
+}
+
+message G2C_EventChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated int32 EventTypes = 1;
+}
+
+message G2C_EventBackGroundChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 EventId = 1;
+	string ImageBGName = 2;
+}
+
+message G2C_EventReservationMemberAdd // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 ReservationId = 1;
+	EventReservationMemberData Member = 2;
+}
+message G2C_AnnouncementBackGroundChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	int64 AnnouncementId = 1;
+	string ImageBGName = 2;
+}
+message L2M_EventRoomAutoCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 EventId = 1;
+	int32 RoomIndex = 2;
+}
+
+message M2L_EventRoomAutoCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_EventRoomAutoClose // IRequest
+{
+	int32 RpcId = 90;
+	int64 EventId = 1;
+	repeated int64 EventRoomIds = 2;
+}
+
+message M2L_EventRoomAutoClose // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_EventRoomAutoRun // IRequest
+{
+	int32 RpcId = 90;
+	int64 EventId = 1;
+	repeated int64 EventRoomIds = 2;
+}
+
+message M2L_EventRoomAutoRun // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message L2M_EventPublicRoomCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 EventId = 1;
+	RoomInfo Info = 2;
+	TeamRoomData Data = 3;
+	TeamAIData AIData = 4;
+}
+
+message M2L_EventPublicRoomCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	string Json = 2;
+}
+
+message L2M_EventPrivateRoomCreate // IRequest
+{
+	int32 RpcId = 90;
+	int64 EventId = 1;
+	int64 ReservationId = 2;
+	RoomInfo Info = 3;
+	TeamRoomData Data = 4;
+	TeamAIData AIData = 5;
+}
+
+message M2L_EventPrivateRoomCreate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 RoomId = 1;
+	string Json = 2;
+}
+
+message Master2L_OnAutoBroadcastEventReleaseRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastEventReleaseRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message Master2L_OnAutoBroadcastEventExpiredRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastEventExpiredRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message Master2L_OnAutoBroadcastSignUpEventReleaseRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastSignUpEventReleaseRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+message Master2L_OnAutoBroadcastSignUpEventExpiredRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastSignUpEventExpiredRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message H2L_EventRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int32 EventType = 1;
+}
+
+message L2H_EventRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Master2L_OnAutoBroadcastEventNoticedRefreshed // IRequest
+{
+	int32 RpcId = 90;
+	int64 BroadcastId = 1;
+}
+
+message L2Master_OnAutoBroadcastEventNoticedRefreshed // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/*-------------------Event-END--------------------------*/
+/*-------------------Event-END--------------------------*/
+
+/*-------------------WorkOut-------------------------------*/
+
+message CalenderNotificationInfo
+{
+	int64 CalenderDateId = 1;
+	int32 Year = 2;
+	int32 Month = 3;
+	int32 Day = 4;
+	int32 Flag = 5;
+	int64 TotalMilliseconds = 6;
+}
+
+message CalenderDateInfo
+{
+	int64 RunTotalTime = 1;
+	int64 RideTotalTime = 2;
+	int64 BoxingTotalTime = 3;
+	double TotalCalories = 4;
+	PlanDayOfWeekInfo PlanDayInfo = 5;
+	CalenderScheduleInfo ScheduleInfo = 6;
+}
+
+message CalenderScheduleInfo
+{
+	int64 FestivalConfigId = 1;
+	repeated int64 ResverationIds = 2;
+}
+
+message PlanInfo
+{
+	int64 PlanId = 1;
+	int64 StartTime = 2;
+	int64 EndTime = 3;
+	int32 DifficultyType = 4;
+	float Percent = 5;
+	string PlanName = 6;
+}
+
+message PlanDayOfWeekInfo
+{
+	int64 PlanId = 1;
+	int64 PlanEndTime = 2;
+	int64 SleepTime = 3;
+	float Weight = 4;
+	int32 WaterML = 5;
+	int32 SportType = 6;
+	string PlanName = 7;
+	PlanProgressInfo ProgressInfo = 8;
+}
+
+message PlanSelectDayOfWeekInfo
+{
+	int32 DayOfWeek = 1;
+	int32 SportType = 2;
+}
+
+message CustomPlanSelectDayOfWeekInfo
+{
+	int32 DayOfWeek = 1;
+	int32 SportType = 2;
+	int64 TargetMin = 3;
+}
+
+message PlanProgressInfo
+{
+	int32 SportType = 1;
+	int64 StartTime = 2;
+	int64 NowSecond = 3;
+	int64 MaxSecond = 4;
+}
+
+message PlanProgressTotalInfo
+{
+	int32 SportType = 1;
+	int64 NowSecond = 2;
+	int64 MaxSecond = 3;
+}
+
+message PlayerCumulativeTimePerMonth
+{
+	int32 Month = 1;
+	int64 AverageCumulativeTime = 2;
+}
+
+message PlayerCaloriesPerMonth
+{
+	int32 Month = 1;
+	double AverageCalories = 2;
+}
+
+message PlayerMileagePerMonth
+{
+	int32 Month = 1;
+	int64 AverageMileage = 2;
+}
+
+message PlayerCaloriesPerWeek
+{
+	int32 Week = 1;
+	double AverageCalories = 3;
+}
+
+message PlayerWeightPerWeek
+{
+	int32 Week = 1;
+	float AverageWeight = 3;
+}
+
+message PlayerSleepTimePerWeek
+{
+	int32 Week = 1;
+	int64 AverageSleepTime = 3;
+}
+
+message PlayerWaterMLPerWeek
+{
+	int32 Week = 1;
+	int32 AverageWaterML = 3;
+}
+
+message PlayerCaloriesPerDay
+{
+	int32 Day = 1;
+	double AverageCalories = 3;
+}
+
+message PlayerWeightPerDay
+{
+	int32 Day = 1;
+	float AverageWeight = 3;
+}
+
+message PlayerSleepTimePerDay
+{
+	int32 Day = 1;
+	int64 AverageSleepTime = 3;
+}
+
+message PlayerWaterMLPerDay
+{
+	int32 Day = 1;
+	int32 AverageWaterML = 3;
+}
+
+message PlanOfWeekProgress
+{
+	int64 CalenderDateId = 1;
+	int64 Second = 2;
+}
+
+message C2L_GetCalenderNotification //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 Year = 1;
+	int32 Month = 2;
+	int32 TimeOffset = 3;
+}
+
+message L2C_GetCalenderNotification //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated CalenderNotificationInfo Infos = 1;
+}
+
+message C2L_GetCalenderDateInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 CalenderDateId = 1;
+	int32 TimeOffset = 2;
+}
+
+message L2C_GetCalenderDateInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	CalenderDateInfo DateInfo = 1;
+}
+
+message C2L_UpdateCalenderDatePlanInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 CalenderDateId = 1;
+	float Weight = 2;
+	int64 SleepTime = 3;
+	int32 WaterML = 4;
+	int32 TimeOffset = 5;
+}
+
+message L2C_UpdateCalenderDatePlanInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_CreateOnePlan //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanConfigId = 1;
+	int64 StartTime = 2;
+	int64 EndTime = 3;
+	int32 TimeOffset = 4;
+	int32 Sex = 5;
+	int32 Height = 6;
+	int32 Weight = 7;
+	float BodyFatPercentage = 8;
+	string PlanName = 9;
+	repeated PlanSelectDayOfWeekInfo SelectDayOfWeekInfos = 10;
+}
+
+message L2C_CreateOnePlan //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlanInfo Info = 1;
+}
+
+message C2L_CreateOneCustomPlan //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanConfigId = 1;
+	int64 StartTime = 2;
+	int64 EndTime = 3;
+	int32 TimeOffset = 4;
+	int32 Sex = 5;
+	int32 Height = 6;
+	int32 Weight = 7;
+	float BodyFatPercentage = 8;
+	string PlanName = 9;
+	repeated CustomPlanSelectDayOfWeekInfo SelectDayOfWeekInfos = 10;
+}
+
+message L2C_CreateOneCustomPlan //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlanInfo Info = 1;
+}
+
+message C2L_GetUserTotalCumulativeTimePerMonth //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 SportType = 1;
+	int32 Year = 2;
+}
+
+message L2C_GetUserTotalCumulativeTimePerMonth //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerCumulativeTimePerMonth Infos = 1;
+}
+
+message C2L_GetUserTotalCaloriesPerMonth //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 SportType = 1;
+	int32 Year = 2;
+}
+
+message L2C_GetUserTotalCaloriesPerMonth //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerCaloriesPerMonth Infos = 1;
+}
+
+message C2L_GetUserTotalMileagePerMonth //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 SportType = 1;
+	int32 Year = 2;
+}
+
+message L2C_GetUserTotalMileagePerMonth //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerMileagePerMonth Infos = 1;
+}
+
+message C2L_GetPlanInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetPlanInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlanInfo Infos = 1;
+}
+
+message C2L_GetPlanDayOfWeekInfos //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetPlanDayOfWeekInfos //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlanInfo Info = 1;
+	repeated PlanProgressInfo ProgressInfos = 2;
+}
+
+message C2L_GetRecentHistoryPlanTotalRecord //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+}
+
+message L2C_GetRecentHistoryPlanTotalRecord //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlanInfo Infos = 1;
+}
+
+message C2L_GetHistoryPlanInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetHistoryPlanInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 TotalTime = 1;
+	int64 TotalCoin = 2;
+	double TotalCalories = 3;
+	PlanInfo Info = 4;
+	repeated PlanProgressTotalInfo ProgressTotalInfos = 5;
+	repeated PlayerCaloriesPerWeek CaloriesPerWeekInfos = 6;
+	repeated PlayerWeightPerWeek WeightPerWeekInfos = 7;
+	repeated PlayerSleepTimePerWeek SleepTimePerWeekInfos = 8;
+	repeated PlayerWaterMLPerWeek WaterMLPerWeekInfos = 9;
+}
+
+message C2L_GetHistoryPlanCaloriesPerDayInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetHistoryPlanCaloriesPerDayInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerCaloriesPerDay CaloriesPerDayInfos = 1;
+}
+
+message C2L_GetHistoryPlanWeightPerDayInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetHistoryPlanWeightPerDayInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerWeightPerDay WeightPerDayInfos = 1;
+}
+
+message C2L_GetHistoryPlanSleepTimePerDayInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetHistoryPlanSleepTimePerDayInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerSleepTimePerDay SleepTimePerDayInfos = 1;
+}
+
+message C2L_GetHistoryPlanWaterMLPerDayInfo //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_GetHistoryPlanWaterMLPerDayInfo //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlayerWaterMLPerDay WaterMLPerDayInfos = 1;
+}
+
+message C2L_CancelOnePlan //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 PlanId = 1;
+}
+
+message L2C_CancelOnePlan //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UpdatePlanOfWeekProgress //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	repeated PlanOfWeekProgress ProgressInfos = 1;
+}
+
+message L2C_UpdatePlanOfWeekProgress //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated PlanOfWeekProgress ProgressInfos = 1;
+}
+
+message G2C_CalenderNotificationsChanged // IActorMessage
+{
+	int32 RpcId = 90;
+	int64 ActorId = 93;
+	repeated CalenderNotificationInfo Infos = 1;
+}
+
+/*-------------------WorkOut-END--------------------------*/
+
+
+/*-------------------JSG-Start--------------------------*/
+
+
+message JSGBoxingRecord
+{
+	int32 LevelType=1;
+	int64 Point = 2;
+}
+
+message JSGFishingRecord
+{
+	int32 LevelType=1;
+	int64 Point = 2;
+	int64 StageId = 3;
+	repeated int64 GetFishList = 4;
+}
+
+message JSGBasketballRecord
+{
+	int32 LevelType = 1;
+	int64 Score = 2;
+	
+	int32 TotalShotCount = 10; //總進球數
+	int32 TotalSwishCount = 11; //空心球進球數
+	double FieldGoalRate = 12; //命中率
+}
+
+message JSGSpaceshipRecord
+{
+	int32 LevelType = 1;
+	int64 Score = 2;
+	
+	int64 TotalTravelSeconds = 10; //總飛行秒數
+	double TotalTravelDistance = 11; //總飛行距離
+}
+
+message JSGBaseBallRecord
+{
+	int32 LevelType=1;
+	int64 Point = 2;
+}
+
+message RankData
+{
+	int64 Uid = 1;
+	string Name = 2;
+	int64 Point = 3;
+	string ImageName = 4;
+}
+
+message C2L_GetSelfHighestPoint // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 GameType = 1;
+	int32 LevelType = 2;
+}
+
+message L2C_GetSelfHighestPoint // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Point  = 1;
+}
+
+message C2L_GetRankList // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 GameType = 1;
+	int32 LevelType = 2;
+}
+
+message L2C_GetRankList // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RankData MyRecord = 1;
+	repeated RankData RankList = 2;
+}
+
+message C2L_GetUnlockLevels // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int32 GameType = 1;
+}
+
+message L2C_GetUnlockLevels // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	repeated int32 levels = 1;
+}
+
+message C2L_UpdateJsgBoxingRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	JSGBoxingRecord Record = 1;
+	repeated int64 StagesId = 2;
+	int64 LevelId = 3;
+}
+
+message L2C_UpdateJsgBoxingRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Rank = 1;
+	bool IsHighScore = 2;
+	repeated int32 IsUnlockNewLevel = 3;
+}
+
+message C2L_UpdateJsgBasketballRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	JSGBasketballRecord Record = 1;
+	repeated int64 StagesId = 2;
+	int64 LevelId = 3;
+}
+
+message L2C_UpdateJsgBasketballRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Rank = 1;
+	bool IsHighScore = 2;
+	repeated int32 IsUnlockNewLevel = 3;
+}
+
+message C2L_UpdateJsgSpaceshipRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	JSGSpaceshipRecord Record = 1;
+	int64 StageId = 2; //關卡ID
+}
+
+message L2C_UpdateJsgSpaceshipRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Rank = 1;
+	bool IsHighScore = 2;
+	repeated int32 UnlockNewStages = 3; //解鎖的新關卡集合
+}
+
+
+message C2L_UpdateJsgFishingRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	JSGFishingRecord Record = 1;
+	repeated int64 StagesId = 2;
+}
+message L2C_UpdateJsgFishingRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Rank = 1;
+	repeated int32 IsUnlockNewLevel = 2;
+}
+
+message C2L_UpdateJsgBaseBallRecord // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	JSGBaseBallRecord Record = 1;
+	repeated int64 StagesId = 2;
+}
+message L2C_UpdateJsgBaseBallRecord // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int32 Rank = 1;
+	repeated int32 UnlockNewLevel=2;
+}
+
+/*-------------------JSG-End--------------------------*/
+/*-------------------Debug--------------------------------*/
+message C2L_UpsertUserCoin //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 Count = 1;
+}
+
+message L2C_UpsertUserCoin //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 Coin = 1;
+}
+
+message C2L_UpsertUserEquipment //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EquipmentID = 1;
+	int32 Count = 2;
+}
+
+message L2C_UpsertUserEquipment //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	EquipmentInfo equipmentInfo = 1;
+	PlayerPetSetting Pet = 2;
+}
+
+message C2L_DeleteUserEquipment //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	int64 EquipmentID = 1;
+}
+
+message L2C_DeleteUserEquipment //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message C2L_UpsertPetInformation //IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	PlayerPetSetting Pet = 1;
+}
+
+message L2C_UpsertPetInformation //IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	PlayerPetSetting Pet = 1;
+}

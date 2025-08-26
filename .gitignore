@@ -52,3 +52,14 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+/Server/DBViewGenerator/bin
+/Publish/
+/Server/ThirdParty/JWT/JWT/bin
+/DBView
+/SwaggerWeb/node_modules
+/SwaggerWeb/.vscode
+/Proto/net7.0
+/Excel/net7.0
+/Excel/md5.txt
+.vs/

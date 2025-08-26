@@ -1,0 +1,9 @@
+位置
+	1.相關放在Assets/_Artist/Stage
+	2.場景檔案和LightMap資料夾放在Assets/Bundles/Scene
+
+必備物件
+	1.Fake Light 給角色照明 (去其他場景複製，可旋轉或調整位置，角色陰影會被他影響)
+	2.PathRoadManager 路線物件(詳細請參照 Path工具說明)
+	3.地板碰撞體 (Layer為Default，設定路線時要打開，設定完成要關閉)
+	4.MiniMapGroup (小地圖定位物件，先用複製的詳細在討論)

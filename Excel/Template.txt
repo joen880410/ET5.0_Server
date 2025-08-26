@@ -1,0 +1,12 @@
+namespace ETModel
+{
+    [Config((int)(AppType))]
+    public partial class (ConfigName)Category : ACategory<(ConfigName)>
+    {
+    }
+
+    public partial class (ConfigName) : IConfig
+    {
+(Fields)
+    }
+}

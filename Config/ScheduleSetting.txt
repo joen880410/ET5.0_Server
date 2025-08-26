@@ -1,0 +1,9 @@
+{"_id":1,"_Func":"RelationshipApply","_CronNet":"30 0 * * 0"}
+{"_id":2,"_Func":"ReservationRoom","_CronNet":"20 0 * * * "}
+{"_id":3,"_Func":"RemakeTaskPerDay","_CronNet":"0 0 * * * "}
+{"_id":4,"_Func":"RemakeTaskPerWeek","_CronNet":"5 0 * * 1"}
+{"_id":5,"_Func":"RemakePetTouch","_CronNet":"2 0 * * * "}
+{"_id":6,"_Func":"RefreshTask","_CronNet":"0 0 * * * "}
+{"_id":7,"_Func":"RefreshEvent","_CronNet":"0 0 * * * "}
+{"_id":8,"_Func":"ReducePetSatiety","_CronNet":"3 0 * * * "}
+{"_id":9,"_Func":"RemakeFreePetTime","_CronNet":"4 0 * * * "}
