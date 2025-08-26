@@ -1,4 +1,4 @@
-# Jacfit-開發篇
+# 開發篇
 
 ## 1.開發環境
 * 作業系統
@@ -41,7 +41,7 @@
    * 如果你本地端的`Benchmark.txt`過舊，可以參考`Benchmark_Default.txt`
  * 3.再執行`Server_Start_Win_Robot.bat`會使用cmd開啟壓力測試程式
 
-# Jacfit-監測篇
+# 監測篇
  
 ## 1.安裝工具&運行
  * Prometheus(請用最新版)
